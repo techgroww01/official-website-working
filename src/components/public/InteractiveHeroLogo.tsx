@@ -131,14 +131,13 @@ export function InteractiveHeroLogo() {
               </linearGradient>
             </defs>
 
-            {/* Upper Delta Arrowhead — surges upward on hover/click */}
+            {/* Upper Delta Arrowhead — surges upward on hover */}
             <motion.g
               animate={
                 shouldReduce
                   ? undefined
                   : {
-                      y: hovered ? -3.5 : 0,
-                      scale: surgeKey > 0 ? [1, 1.05, 1] : 1,
+                      y: hovered ? -4 : 0,
                     }
               }
               transition={{ type: "spring", stiffness: 260, damping: 18 }}
