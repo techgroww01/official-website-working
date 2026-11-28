@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown, Layers } from "lucide-react";
 import type { PublicServiceItem } from "@/lib/cms/public-data";
+import { ServiceIcon } from "@/components/public/ServiceIcon";
 
 /**
  * 1Centre-inspired live interactive system blueprint split:
@@ -152,9 +153,14 @@ export function InteractiveBlueprint({ services }: { services: PublicServiceItem
                 </span>
               </div>
 
-              <h3 className="font-display mt-5 text-3xl font-bold text-[var(--ink)]">
-                {active.title}
-              </h3>
+              <div className="flex items-center gap-4 mt-5">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-white text-[var(--brand-royal)] shadow-xs border border-[var(--line)]">
+                  <ServiceIcon slug={active.slug} className="h-6 w-6" />
+                </div>
+                <h3 className="font-display text-3xl font-bold text-[var(--ink)]">
+                  {active.title}
+                </h3>
+              </div>
 
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
                 <div className="rounded-[var(--radius-md)] border border-[var(--line)] bg-white p-4">

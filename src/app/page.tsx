@@ -15,6 +15,8 @@ import { FaqAccordion } from "@/components/public/FaqAccordion";
 import { NextTwo } from "@/components/public/NextTwo";
 import { HeroAnimated } from "@/components/public/HeroAnimated";
 import { AnimatedSection } from "@/components/public/AnimatedSection";
+import { TrustBar } from "@/components/public/TrustBar";
+import { ShieldCheck, Code2, Users, Cpu } from "lucide-react";
 
 const PILLARS = [
   {
@@ -81,6 +83,32 @@ export default async function HomePage() {
 
         {/* 2. Pausable Capability Ribbon (WCAG 2.2.2) */}
         <CapabilityMarquee />
+
+        {/* 2b. Trust / Differentiator Feature Bar */}
+        <TrustBar
+          items={[
+            {
+              icon: <Code2 className="h-5 w-5" aria-hidden="true" />,
+              label: "Direct Principal Engineering",
+              sub: "Collaborate directly with the developers writing and reviewing the production codebase.",
+            },
+            {
+              icon: <ShieldCheck className="h-5 w-5" aria-hidden="true" />,
+              label: "Zero Fabricated Claims",
+              sub: "Honest scopes, certified DPDP 2023 compliance, and verifiable case studies.",
+            },
+            {
+              icon: <Cpu className="h-5 w-5" aria-hidden="true" />,
+              label: "Multi-Portal Architecture",
+              sub: "Purpose-built RBAC portals for Clients, Interns, Sales, Recruitment, and Admin.",
+            },
+            {
+              icon: <Users className="h-5 w-5" aria-hidden="true" />,
+              label: "Launch Accountability",
+              sub: "Documented repositories, automated QA pipelines, and responsive post-launch support.",
+            },
+          ]}
+        />
 
         {/* 3. Four Operating Pillars */}
         <section className="section-rhythm surface-light border-b border-[var(--line)] bg-[var(--paper-elevated)]">

@@ -105,16 +105,16 @@ export function HeroAnimated() {
         >
           <a
             href="/contact"
-            className="inline-flex min-h-[48px] items-center gap-2 rounded-[var(--radius-pill)] bg-white px-7 py-3 text-sm font-semibold text-[var(--ink)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-100 hover:shadow-lg motion-reduce:transform-none"
+            className="group inline-flex min-h-[48px] items-center gap-2 rounded-[var(--radius-pill)] bg-white px-7 py-3 text-sm font-semibold text-[var(--ink)] shadow-[0_1px_3px_rgba(0,0,0,0.1),0_4px_16px_rgba(255,255,255,0.15)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-[0_2px_6px_rgba(0,0,0,0.15),0_8px_24px_rgba(56,189,248,0.3)] motion-reduce:transform-none"
           >
             Start a project
-            <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" aria-hidden="true">
+            <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none" aria-hidden="true">
               <path d="M4 12L12 4M12 4H6M12 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </a>
           <a
             href="#services-blueprint"
-            className="inline-flex min-h-[48px] items-center gap-2 rounded-[var(--radius-pill)] border border-white/30 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white hover:bg-white/5"
+            className="inline-flex min-h-[48px] items-center gap-2 rounded-[var(--radius-pill)] border border-white/30 px-6 py-3 text-sm font-semibold text-white backdrop-blur-xs transition-colors hover:border-white hover:bg-white/10"
           >
             Explore blueprint
             <svg viewBox="0 0 16 16" fill="none" className="h-4 w-4" aria-hidden="true">
