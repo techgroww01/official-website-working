@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
   if (!auth.ok) return auth.response;
 
   const ip = getTrustedClientIp(request);
-  const rl = await checkRateLimit("portal_api", `${auth.auth.userId}:upload`);
+  const rl = await checkRateLimit("portal_api", `${auth.auth.userId}:${ip}:upload`);
   if (!rl.allowed) return apiError("RATE_LIMITED", "Upload rate limit reached", 429);
 
   const parsedBody = await parseJsonBody(request);

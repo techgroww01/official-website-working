@@ -13,7 +13,7 @@ async function processUnsubscribe(token: string | null) {
   }
 
   if (!isSupabaseAdminConfigured()) {
-    return { ok: true, email: "demo@techgroww.co.in" };
+    return { ok: true, email: null as string | null };
   }
 
   const admin = getSupabaseAdminClient();

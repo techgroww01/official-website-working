@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans, Outfit } from "next/font/google";
 import { COMPANY_CONFIG } from "@/lib/company-config";
+import { MotionProvider } from "@/components/brand/MotionProvider";
 import { CookieBanner } from "@/components/public/CookieBanner";
 import "./globals.css";
 
@@ -37,6 +38,12 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Tech Groww",
     locale: "en_IN",
+    title: "Tech Groww | Technology That Drives Growth",
+    description:
+      "Custom web & mobile engineering, Salesforce ecosystem solutions, UI/UX design, enterprise software, and IT consulting from Greater Noida, India.",
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "Tech Groww | Technology That Drives Growth",
     description:
       "Custom web & mobile engineering, Salesforce ecosystem solutions, UI/UX design, enterprise software, and IT consulting from Greater Noida, India.",
@@ -88,8 +95,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
-        {children}
-        <CookieBanner gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        <MotionProvider>
+          {children}
+          <CookieBanner gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        </MotionProvider>
       </body>
     </html>
   );

@@ -14,15 +14,11 @@ export async function GET(
   }
 
   if (!isSupabaseAdminConfigured()) {
-    return apiOk({
-      valid: true,
-      certificateCode: normalizedCode,
-      recipientName: "Demo Verified Intern",
-      programTitle: "Cloud Architecture & Full-Stack Systems",
-      issuedAt: "2026-03-01T00:00:00Z",
-      revoked: false,
-      demoMode: true,
-    });
+    return apiError(
+      "VERIFICATION_UNAVAILABLE",
+      "Certificate verification requires a live database connection",
+      503
+    );
   }
 
   const admin = getSupabaseAdminClient();

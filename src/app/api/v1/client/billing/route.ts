@@ -1,26 +1,15 @@
-import { type NextRequest } from "next/server";
 import { apiError, apiOk } from "@/lib/api/http";
 import { requirePermission } from "@/lib/auth/session";
 import { getSupabaseAdminClient, isSupabaseAdminConfigured } from "@/lib/supabase/admin";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   // Strict rule: billing read requires explicit 'billing' 'read' permission
   const auth = await requirePermission("billing", "read");
   if (!auth.ok) return auth.response;
 
   if (!isSupabaseAdminConfigured()) {
     return apiOk({
-      invoices: [
-        {
-          id: "INV-2026-001",
-          invoice_number: "TG-INV-2026-001",
-          description: "Phase 01 Discovery & Architecture Kickoff",
-          amount: 0,
-          currency: "INR",
-          status: "paid",
-          issued_at: "2026-02-01T00:00:00Z",
-        },
-      ],
+      invoices: [],
       demoMode: true,
     });
   }

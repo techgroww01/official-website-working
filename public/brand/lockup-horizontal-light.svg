@@ -1,7 +1,17 @@
-<!-- Tech Groww Pure-Vector Horizontal Lockup (Light / Portal Surface) — pending C-11 visual sign-off -->
+<!-- Tech Groww Pure-Vector Horizontal Lockup (Light / Portal Surface) -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" fill="none" role="img" aria-label="Tech Groww logo">
-  <polygon points="48,10 16,60 34,60 48,43" fill="#0369A1" />
-  <polygon points="48,10 80,60 62,60 48,43" fill="#1D4ED8" />
+  <defs>
+    <linearGradient id="tg-hl-l" x1="48" y1="8" x2="18" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0369A1" />
+      <stop offset="100%" stop-color="#1E40AF" />
+    </linearGradient>
+    <linearGradient id="tg-hr-l" x1="48" y1="8" x2="78" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+  </defs>
+  <polygon points="48,10 16,60 34,60 48,43" fill="url(#tg-hl-l)" />
+  <polygon points="48,10 80,60 62,60 48,43" fill="url(#tg-hr-l)" />
   <polygon points="48,43 34,60 48,54" fill="#075985" />
   <polygon points="48,43 62,60 48,54" fill="#0369A1" />
   <polygon points="48,54 34,60 8,76 24,76 48,62" fill="#0369A1" />

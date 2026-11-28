@@ -35,6 +35,7 @@ function buildCsp(nonce: string): string {
     `script-src 'self' 'nonce-${nonce}' https://challenges.cloudflare.com https://www.googletagmanager.com`,
     "style-src 'self' 'unsafe-inline'",
     `img-src 'self' data: blob: ${supabaseUrl}`,
+    "media-src 'self'",
     "font-src 'self' data:",
     `connect-src 'self' ${supabaseUrl} https://challenges.cloudflare.com https://www.google-analytics.com`,
     "frame-src https://challenges.cloudflare.com",
@@ -142,6 +143,6 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|brand/.*\\.(?:svg|png|jpg|jpeg|webp)).*)",
+    "/((?!_next/static|_next/image|favicon.ico|icon\\.svg|apple-icon|opengraph-image|robots\\.txt|sitemap\\.xml|(?:brand|images|videos)/.*\\.(?:svg|png|jpg|jpeg|webp|avif|mp4|webm)).*)",
   ],
 };

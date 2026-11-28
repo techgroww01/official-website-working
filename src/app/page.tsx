@@ -13,6 +13,8 @@ import { ProblemSelector } from "@/components/public/ProblemSelector";
 import { DeliveryRail } from "@/components/public/DeliveryRail";
 import { FaqAccordion } from "@/components/public/FaqAccordion";
 import { NextTwo } from "@/components/public/NextTwo";
+import { HeroAnimated } from "@/components/public/HeroAnimated";
+import { AnimatedSection } from "@/components/public/AnimatedSection";
 
 const PILLARS = [
   {
@@ -49,68 +51,30 @@ export default async function HomePage() {
       <SiteHeader polarity="dark" />
 
       <main id="main" className="flex-1">
-        {/* 1. Editorial Dark Ink Hero — SSR H1 immediately visible at opacity: 1 for fast LCP */}
+        {/* 1. Editorial Dark Ink Hero — Animated with Motion, SSR fallback for LCP */}
         <section className="surface-dark relative overflow-hidden bg-[var(--ink)] pt-14 pb-20 text-white sm:pt-20 sm:pb-24">
           <div className="tg-accent-draw h-[2px] w-full bg-gradient-to-r from-[var(--brand-sky)] via-[var(--brand-cobalt)] to-transparent mb-10" />
 
-          <div className="container-arch grid items-center gap-12 lg:grid-cols-12">
+          {/* Architectural grid background */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 tg-hero-grid opacity-60"
+          />
+          {/* Radial glow */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[700px] -translate-x-1/2 rounded-full"
+            style={{ background: "radial-gradient(ellipse at center, rgba(2,132,199,0.12) 0%, transparent 70%)" }}
+          />
+
+          <div className="container-arch relative z-10 grid items-center gap-12 lg:grid-cols-12">
             <div className="lg:col-span-8">
-              <p className="eyebrow text-[var(--brand-sky)]">
-                Greater Noida, Uttar Pradesh · Founded {COMPANY_CONFIG.foundedYear}
-              </p>
-
-              <h1 className="font-display mt-5 text-[clamp(2.65rem,7.2vw,5.75rem)] font-extrabold leading-[0.94] tracking-[-0.045em] text-white">
-                Technology that drives growth.
-              </h1>
-
-              <p className="mt-6 max-w-2xl text-[clamp(1.02rem,1.4vw,1.18rem)] leading-relaxed text-slate-300">
-                Engineering software, Salesforce workflows, and digital products around real business
-                bottlenecks — direct principal accountability from scope to support.
-              </p>
-
-              <div className="mt-9 flex flex-wrap items-center gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex min-h-[48px] items-center gap-2 rounded-[var(--radius-pill)] bg-white px-7 py-3 text-sm font-semibold text-[var(--ink)] transition-transform hover:-translate-y-0.5 hover:bg-slate-100"
-                >
-                  Start a project
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
-                <a
-                  href="#services-blueprint"
-                  className="inline-flex min-h-[48px] items-center gap-2 rounded-[var(--radius-pill)] border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:border-white"
-                >
-                  Explore blueprint
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
-              </div>
-
-              {/* Super 8 Studio-inspired 3-item balanced metadata strip */}
-              <dl className="mt-12 grid grid-cols-1 gap-4 border-t border-white/15 pt-6 sm:grid-cols-3">
-                <div>
-                  <dt className="eyebrow text-[var(--text-muted-dark)]">Founded</dt>
-                  <dd className="mt-1 font-display text-lg font-bold text-white">
-                    {COMPANY_CONFIG.foundedYear}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="eyebrow text-[var(--text-muted-dark)]">Headquarters</dt>
-                  <dd className="mt-1 font-display text-lg font-bold text-white">
-                    Greater Noida, UP
-                  </dd>
-                </div>
-                <div>
-                  <dt className="eyebrow text-[var(--text-muted-dark)]">Core Focus</dt>
-                  <dd className="mt-1 font-display text-lg font-bold text-white">
-                    Web, Salesforce &amp; Software
-                  </dd>
-                </div>
-              </dl>
+              <HeroAnimated />
             </div>
 
-            {/* GrowthSignal vector architectural diagram (hidden < 480px, compact on mobile/tablet, hero split desktop) */}
+            {/* GrowthSignal vector architectural diagram */}
             <div className="hidden min-[480px]:flex justify-center lg:col-span-4 lg:justify-end">
-              <GrowthSignal className="h-44 w-44 sm:h-56 sm:w-56 lg:h-80 lg:w-80" />
+              <GrowthSignal className="h-44 w-44 sm:h-56 sm:w-56 lg:h-80 lg:w-80 drop-shadow-[0_0_40px_rgba(56,189,248,0.18)]" />
             </div>
           </div>
         </section>
@@ -121,29 +85,30 @@ export default async function HomePage() {
         {/* 3. Four Operating Pillars */}
         <section className="section-rhythm surface-light border-b border-[var(--line)] bg-[var(--paper-elevated)]">
           <div className="container-arch">
-            <p className="eyebrow text-[var(--brand-link)]">01 · What Defines Us</p>
-            <h2 className="font-display mt-2 max-w-3xl text-3xl font-bold text-[var(--ink)] sm:text-5xl">
-              No inflated history. No agency theatre. Just serious engineering.
-            </h2>
+            <AnimatedSection>
+              <p className="eyebrow text-[var(--brand-link)]">01 · What Defines Us</p>
+              <h2 className="font-display mt-2 max-w-3xl text-3xl font-bold text-[var(--ink)] sm:text-5xl">
+                No inflated history. No agency theatre. Just serious engineering.
+              </h2>
+            </AnimatedSection>
 
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {PILLARS.map((pillar) => (
-                <article
-                  key={pillar.num}
-                  className="flex flex-col justify-between border-t-2 border-[var(--ink)] pt-5"
-                >
-                  <div>
-                    <span className="font-mono-tech text-xs font-medium text-[var(--brand-link)]">
-                      {pillar.num}
-                    </span>
-                    <h3 className="font-display mt-3 text-xl font-bold text-[var(--ink)]">
-                      {pillar.title}
-                    </h3>
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">
-                    {pillar.body}
-                  </p>
-                </article>
+              {PILLARS.map((pillar, i) => (
+                <AnimatedSection key={pillar.num} delay={i * 70}>
+                  <article className="flex flex-col justify-between border-t-2 border-[var(--ink)] pt-5 h-full">
+                    <div>
+                      <span className="font-mono-tech text-xs font-medium text-[var(--brand-link)]">
+                        {pillar.num}
+                      </span>
+                      <h3 className="font-display mt-3 text-xl font-bold text-[var(--ink)]">
+                        {pillar.title}
+                      </h3>
+                    </div>
+                    <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">
+                      {pillar.body}
+                    </p>
+                  </article>
+                </AnimatedSection>
               ))}
             </div>
           </div>
@@ -202,23 +167,28 @@ export default async function HomePage() {
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
-              {insights.slice(0, 2).map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/insights/${post.slug}`}
-                  className="group rounded-[var(--radius-md)] border border-[var(--line)] bg-white p-6 transition-colors hover:border-[var(--brand-royal)]"
-                >
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="eyebrow text-[var(--brand-link)]">{post.categoryName}</span>
-                    <span className="font-mono-tech text-xs text-[var(--text-muted)]">
-                      {post.readingTimeMins} min read
-                    </span>
-                  </div>
-                  <h3 className="font-display mt-3 text-2xl font-bold text-[var(--ink)] group-hover:text-[var(--brand-royal)]">
-                    {post.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-[var(--text-muted)]">{post.excerpt}</p>
-                </Link>
+              {insights.slice(0, 2).map((post, i) => (
+                <AnimatedSection key={post.slug} delay={i * 100}>
+                  <Link
+                    href={`/insights/${post.slug}`}
+                    className="group flex h-full flex-col rounded-[var(--radius-md)] border border-[var(--line)] bg-white p-6 tg-card-interactive hover:border-[var(--brand-royal)] hover:shadow-lg"
+                  >
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="eyebrow text-[var(--brand-link)]">{post.categoryName}</span>
+                      <span className="font-mono-tech text-xs text-[var(--text-muted)]">
+                        {post.readingTimeMins} min read
+                      </span>
+                    </div>
+                    <h3 className="font-display mt-3 text-2xl font-bold text-[var(--ink)] group-hover:text-[var(--brand-royal)] transition-colors">
+                      {post.title}
+                    </h3>
+                    <p className="mt-2 flex-1 text-sm text-[var(--text-muted)]">{post.excerpt}</p>
+                    <div className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[var(--brand-link)] group-hover:text-[var(--brand-royal)]">
+                      Read article
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transform-none" aria-hidden="true" />
+                    </div>
+                  </Link>
+                </AnimatedSection>
               ))}
             </div>
           </div>

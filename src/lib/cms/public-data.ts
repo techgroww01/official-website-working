@@ -320,7 +320,7 @@ const FALLBACK_JOBS: PublicJobItem[] = [
       "Qualify inbound website and LinkedIn leads, conduct structured discovery calls, maintain CRM pipeline stages, and coordinate scoping with delivery leads.",
     requirements:
       "Clear consultative B2B communication, IT/software solutions familiarity, and structured pipeline hygiene.",
-    stipendOrRange: "As per discussion (Confirm active role status: C-12)",
+    stipendOrRange: "As per discussion",
   },
   {
     id: "00000000-0000-4000-8000-000000000002",
@@ -336,7 +336,7 @@ const FALLBACK_JOBS: PublicJobItem[] = [
       "Support market research, structured outreach, discovery note preparation, and weekly mentored tasks inside the Intern & Sales Portals.",
     requirements:
       "Strong communication fundamentals, interest in B2B software & Salesforce solutions, and commitment to the 8-week cohort.",
-    stipendOrRange: "Offer letter + verifiable completion certificate (C-12)",
+    stipendOrRange: "Offer letter + verifiable completion certificate",
   },
 ];
 

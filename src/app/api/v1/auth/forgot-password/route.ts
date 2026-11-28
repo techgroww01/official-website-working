@@ -2,7 +2,6 @@ import { type NextRequest } from "next/server";
 import { z } from "zod";
 import { apiError, apiOk, formatZodError, parseJsonBody } from "@/lib/api/http";
 import { verifyTurnstileToken } from "@/lib/auth/session";
-import { sendTransactionalEmail } from "@/lib/email/resend";
 import { validateMutationCsrf } from "@/lib/security/csrf";
 import { checkRateLimit, getTrustedClientIp } from "@/lib/security/rate-limit";
 import { createServerSupabaseClient } from "@/lib/supabase/server";

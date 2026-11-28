@@ -2,8 +2,11 @@ import { type NextRequest } from "next/server";
 import { z } from "zod";
 import { apiError, apiOk, formatZodError, parseJsonBody } from "@/lib/api/http";
 import { requirePermission, writeRedactedAuditLog } from "@/lib/auth/session";
+import { ALL_CANONICAL_ROLES } from "@/lib/rbac/roles";
 import { validateMutationCsrf } from "@/lib/security/csrf";
 import { getSupabaseAdminClient, isSupabaseAdminConfigured } from "@/lib/supabase/admin";
+
+const VALID_ROLE_SET = new Set<string>(ALL_CANONICAL_ROLES);
 
 export async function GET() {
   const auth = await requirePermission("users", "read");
@@ -11,17 +14,7 @@ export async function GET() {
 
   if (!isSupabaseAdminConfigured()) {
     return apiOk({
-      users: [
-        {
-          id: "u1",
-          email: "admin@techgroww.co.in",
-          fullName: "Umesh Patel",
-          accountClass: "staff",
-          status: "active",
-          roles: ["super_admin"],
-          mfaEnabled: true,
-        },
-      ],
+      users: [],
       demoMode: true,
     });
   }

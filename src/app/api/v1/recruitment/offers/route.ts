@@ -1,8 +1,5 @@
-import { type NextRequest } from "next/server";
-import { z } from "zod";
-import { apiError, apiOk, formatZodError, parseJsonBody } from "@/lib/api/http";
-import { requirePermission, writeRedactedAuditLog } from "@/lib/auth/session";
-import { validateMutationCsrf } from "@/lib/security/csrf";
+import { apiError, apiOk } from "@/lib/api/http";
+import { requirePermission } from "@/lib/auth/session";
 import { getSupabaseAdminClient, isSupabaseAdminConfigured } from "@/lib/supabase/admin";
 
 export async function GET() {

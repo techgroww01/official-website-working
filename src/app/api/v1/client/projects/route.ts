@@ -1,23 +1,14 @@
-import { type NextRequest } from "next/server";
 import { apiError, apiOk } from "@/lib/api/http";
 import { requirePermission } from "@/lib/auth/session";
 import { getSupabaseAdminClient, isSupabaseAdminConfigured } from "@/lib/supabase/admin";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const auth = await requirePermission("client_projects", "read");
   if (!auth.ok) return auth.response;
 
   if (!isSupabaseAdminConfigured()) {
     return apiOk({
-      projects: [
-        {
-          id: "ENG-2026-01",
-          name: "Enterprise Operations & Architecture Implementation",
-          current_phase: "Discovery",
-          status: "onboarding",
-          start_date: "2026-02-01",
-        },
-      ],
+      projects: [],
       demoMode: true,
     });
   }

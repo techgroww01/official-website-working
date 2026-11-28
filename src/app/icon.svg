@@ -1,7 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="tg-icon-l" x1="60" y1="18" x2="26" y2="82" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="tg-icon-r" x1="60" y1="18" x2="94" y2="82" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="45%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="tg-icon-wl" x1="14" y1="94" x2="60" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0369A1" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="tg-icon-wr" x1="60" y1="70" x2="106" y2="94" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+  </defs>
   <rect width="120" height="120" rx="24" fill="#070D19" />
-  <polygon points="60,18 24,76 44,76 60,56" fill="#38BDF8" />
-  <polygon points="60,18 96,76 76,76 60,56" fill="#0284C7" />
-  <polygon points="60,68 44,76 14,94 32,94 60,78" fill="#0284C7" />
-  <polygon points="60,68 76,76 106,94 88,94 60,78" fill="#1D4ED8" />
+  <polygon points="60,18 24,76 44,76 60,56" fill="url(#tg-icon-l)" />
+  <polygon points="60,18 96,76 76,76 60,56" fill="url(#tg-icon-r)" />
+  <polygon points="60,56 44,76 60,68" fill="#0369A1" opacity="0.9" />
+  <polygon points="60,56 76,76 60,68" fill="#0284C7" />
+  <polygon points="60,68 44,76 14,94 32,94 60,78" fill="url(#tg-icon-wl)" />
+  <polygon points="60,68 76,76 106,94 88,94 60,78" fill="url(#tg-icon-wr)" />
 </svg>

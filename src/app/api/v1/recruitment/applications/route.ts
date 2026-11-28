@@ -5,7 +5,7 @@ import { requirePermission, writeRedactedAuditLog } from "@/lib/auth/session";
 import { validateMutationCsrf } from "@/lib/security/csrf";
 import { getSupabaseAdminClient, isSupabaseAdminConfigured } from "@/lib/supabase/admin";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const auth = await requirePermission("applications", "read");
   if (!auth.ok) return auth.response;
 

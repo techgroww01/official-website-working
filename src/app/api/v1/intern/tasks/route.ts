@@ -1,9 +1,8 @@
-import { type NextRequest } from "next/server";
 import { apiError, apiOk } from "@/lib/api/http";
 import { requirePermission } from "@/lib/auth/session";
 import { getSupabaseAdminClient, isSupabaseAdminConfigured } from "@/lib/supabase/admin";
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   const auth = await requirePermission("intern_tasks", "read");
   if (!auth.ok) return auth.response;
 
@@ -12,14 +11,16 @@ export async function GET(request: NextRequest) {
   }
 
   const admin = getSupabaseAdminClient();
-  // Fetch tasks assigned to the current user's enrollment
-  const { data: enrollment } = await admin
+  // Fetch tasks assigned to any of the current user's enrollments
+  const { data: enrollments, error: enrollErr } = await admin
     .from("intern_enrollments")
     .select("id")
-    .eq("user_id", auth.auth.userId)
-    .maybeSingle();
+    .eq("user_id", auth.auth.userId);
 
-  if (!enrollment && auth.auth.accountClass === "intern") {
+  if (enrollErr) return apiError("DB_ERROR", "Failed to load intern enrollment", 500);
+
+  const enrollmentIds = (enrollments ?? []).map((e) => e.id);
+  if (enrollmentIds.length === 0 && auth.auth.accountClass === "intern") {
     return apiOk({ tasks: [] });
   }
 
@@ -27,8 +28,8 @@ export async function GET(request: NextRequest) {
     .from("intern_tasks")
     .select("id, title, instructions, due_at, priority, status, task_submissions(id, submission_url, mentor_feedback, rating, reviewed_at)");
 
-  if (enrollment) {
-    query = query.eq("enrollment_id", enrollment.id);
+  if (enrollmentIds.length > 0) {
+    query = query.in("enrollment_id", enrollmentIds);
   }
 
   const { data, error } = await query.order("created_at", { ascending: false });

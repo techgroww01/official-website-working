@@ -1,5 +1,4 @@
-import { type NextRequest } from "next/server";
-import { apiError, apiOk } from "@/lib/api/http";
+import { apiOk } from "@/lib/api/http";
 import { requirePermission } from "@/lib/auth/session";
 import { getSupabaseAdminClient, isSupabaseAdminConfigured } from "@/lib/supabase/admin";
 
@@ -10,10 +9,8 @@ export async function GET() {
   if (!isSupabaseAdminConfigured()) {
     return apiOk({
       metrics: {
-        totalLeads: 3,
-        qualifiedLeads: 2,
-        activeOpportunities: 2,
-        wonDeals: 1,
+        totalLeads: 0,
+        wonDeals: 0,
       },
       demoMode: true,
     });
