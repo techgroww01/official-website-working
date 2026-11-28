@@ -60,9 +60,9 @@ export function ProblemSelector() {
                 role="radio"
                 aria-checked={active}
                 onClick={() => setSelectedId(item.id)}
-                className={`min-h-[44px] rounded-[var(--radius-pill)] border px-5 py-2.5 text-left text-sm font-medium transition-colors ${
+                className={`min-h-[44px] rounded-[var(--radius-pill)] border px-5 py-2.5 text-left text-sm font-medium transition-all duration-150 hover:-translate-y-0.5 motion-reduce:transform-none ${
                   active
-                    ? "border-[var(--brand-royal)] bg-[var(--brand-royal)] text-white"
+                    ? "border-[var(--brand-royal)] bg-[var(--brand-royal)] text-white shadow-xs"
                     : "border-[var(--line-control)] bg-white text-[var(--ink)] hover:border-[var(--brand-royal)]"
                 }`}
               >

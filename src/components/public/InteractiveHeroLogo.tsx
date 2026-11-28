@@ -28,6 +28,22 @@ export function InteractiveHeroLogo() {
     setTilt({ x: 0, y: 0 });
   }
 
+  function handleTouchMove(e: React.TouchEvent<HTMLDivElement>) {
+    if (shouldReduce || !containerRef.current || e.touches.length === 0) return;
+    const touch = e.touches[0];
+    if (!touch) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const nx = (touch.clientX - rect.left) / rect.width - 0.5;
+    const ny = (touch.clientY - rect.top) / rect.height - 0.5;
+    setTilt({ x: -ny * 22, y: nx * 26 });
+    setHovered(true);
+  }
+
+  function handleTouchEnd() {
+    setHovered(false);
+    setTilt({ x: 0, y: 0 });
+  }
+
   function handleClick() {
     setSurgeKey((k) => k + 1);
   }
@@ -39,6 +55,8 @@ export function InteractiveHeroLogo() {
         onPointerMove={handlePointerMove}
         onPointerEnter={() => setHovered(true)}
         onPointerLeave={handlePointerLeave}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         className="relative flex h-[280px] w-[280px] sm:h-[340px] sm:w-[340px] items-center justify-center select-none"
         style={{ perspective: "900px" }}
       >

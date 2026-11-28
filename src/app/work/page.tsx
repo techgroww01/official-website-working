@@ -24,14 +24,14 @@ export default async function WorkPage() {
         <section className="section-rhythm border-b border-[var(--line)]">
           <div className="container-arch max-w-4xl">
             <AnimatedSection>
-              <p className="eyebrow text-[var(--brand-link)]">Engineering Proof · Zero Disguised Demos</p>
+              <p className="eyebrow text-[var(--brand-link)]">Our Work &amp; Examples</p>
               <h1 className="font-display mt-4 text-4xl font-extrabold text-[var(--ink)] sm:text-6xl">
-                Work &amp; Reference Blueprints.
+                Honest solutions, never fake claims.
               </h1>
               <p className="mt-6 text-lg leading-relaxed text-[var(--text-muted)]">
-                Commercial client work is published strictly after written client approval. Every
-                architectural pattern below is transparently badged as a Reference Blueprint or
-                Internal Prototype.
+                We believe in complete transparency. We only publish client names with written permission.
+                Meanwhile, explore our interactive sample solutions demonstrating how we organize websites,
+                customer portals, and business workflows cleanly.
               </p>
             </AnimatedSection>
           </div>

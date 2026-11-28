@@ -30,6 +30,12 @@
   --status-warn: #92400e;
   --status-danger: #b42318;
 
+  /* Warm Indian Studio Touches */
+  --warmth-amber: #d97706;
+  --warmth-amber-light: #fef3c7;
+  --warmth-terracotta: #c2410c;
+  --warmth-border: #fde68a;
+
   /* Radii */
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -531,6 +537,16 @@ body {
 /* ============================================================
    HERO GRID PATTERN (architectural background lines)
    ============================================================ */
+.tg-card-tactile {
+  transition: transform var(--duration-fast) var(--ease-spring),
+              box-shadow var(--duration-fast) var(--ease-spring),
+              border-color var(--duration-fast) ease;
+}
+.tg-card-tactile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+}
+
 .tg-hero-grid {
   background-image:
     linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),

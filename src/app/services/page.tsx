@@ -28,13 +28,13 @@ export default async function ServicesDirectoryPage() {
         <section className="section-rhythm border-b border-[var(--line)]">
           <div className="container-arch max-w-4xl">
             <AnimatedSection>
-              <p className="eyebrow text-[var(--brand-link)]">Engineering Capabilities</p>
+              <p className="eyebrow text-[var(--brand-link)]">What We Build</p>
               <h1 className="font-display mt-4 text-4xl font-extrabold text-[var(--ink)] sm:text-6xl">
-                Focused capabilities scoped around business reality.
+                Digital products and software built for real business growth.
               </h1>
               <p className="mt-6 text-lg leading-relaxed text-[var(--text-muted)]">
-                Every service line combines principal-level system architecture, transparent code
-                ownership, and pragmatic delivery timelines.
+                From responsive websites and mobile apps to custom Salesforce workflows and team dashboards,
+                we craft reliable software tailored around what your business actually needs — with personal care and zero confusing jargon.
               </p>
             </AnimatedSection>
           </div>

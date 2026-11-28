@@ -201,7 +201,7 @@ export function StudioShowcase() {
           {GALLERY.map((item, idx) => (
             <div
               key={item.title}
-              className="group overflow-hidden rounded-xl border border-[var(--line)] bg-white shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[var(--brand-royal)] hover:shadow-md flex flex-col justify-between"
+              className="group tg-card-tactile overflow-hidden rounded-xl border border-[var(--line)] bg-white shadow-xs hover:border-[var(--brand-royal)] flex flex-col justify-between"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
                 <Image
