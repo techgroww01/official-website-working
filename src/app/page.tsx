@@ -6,7 +6,7 @@ import { getPublishedInsights, getPublishedServices } from "@/lib/cms/public-dat
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { ScrollProgress } from "@/components/public/ScrollProgress";
-import { GrowthSignal } from "@/components/public/GrowthSignal";
+import { ArchitectureVisualizer } from "@/components/public/ArchitectureVisualizer";
 import { CapabilityMarquee } from "@/components/public/CapabilityMarquee";
 import { InteractiveBlueprint } from "@/components/public/InteractiveBlueprint";
 import { ProblemSelector } from "@/components/public/ProblemSelector";
@@ -54,10 +54,7 @@ export default async function HomePage() {
 
       <main id="main" className="flex-1">
         {/* 1. Editorial Dark Ink Hero — Premium architectural spacing */}
-        <section className="surface-dark relative overflow-hidden bg-[var(--ink)] pt-10 pb-16 text-white sm:pt-14 sm:pb-20">
-          {/* Subtle top accent hairline */}
-          <div className="tg-accent-draw h-[1px] w-full bg-gradient-to-r from-transparent via-[var(--brand-sky)]/40 to-transparent mb-8" />
-
+        <section className="surface-dark relative overflow-hidden bg-[var(--ink)] pt-6 pb-14 text-white sm:pt-8 sm:pb-18">
           {/* Architectural grid background */}
           <div
             aria-hidden="true"
@@ -70,14 +67,14 @@ export default async function HomePage() {
             style={{ background: "radial-gradient(ellipse at center, rgba(2,132,199,0.12) 0%, transparent 70%)" }}
           />
 
-          <div className="container-arch relative z-10 grid items-center gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-8">
+          <div className="container-arch relative z-10 grid items-center gap-10 lg:grid-cols-12">
+            <div className="lg:col-span-7">
               <HeroAnimated />
             </div>
 
-            {/* GrowthSignal vector architectural diagram */}
-            <div className="hidden md:flex justify-center lg:col-span-4 lg:justify-end">
-              <GrowthSignal className="h-52 w-52 sm:h-64 sm:w-64 lg:h-72 lg:w-72 drop-shadow-[0_0_24px_rgba(56,189,248,0.12)]" />
+            {/* Architecture Visualizer Interactive Console */}
+            <div className="mt-6 flex justify-center lg:col-span-5 lg:mt-0 lg:justify-end">
+              <ArchitectureVisualizer />
             </div>
           </div>
         </section>
@@ -124,16 +121,19 @@ export default async function HomePage() {
             <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
               {PILLARS.map((pillar, i) => (
                 <AnimatedSection key={pillar.num} delay={i * 70}>
-                  <article className="flex flex-col justify-between border-t-2 border-[var(--ink)] pt-5 h-full">
+                  <article className="group flex flex-col justify-between rounded-xl border border-[var(--line)] bg-white p-6 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:border-[var(--brand-royal)] hover:shadow-md h-full">
                     <div>
-                      <span className="font-mono-tech text-xs font-medium text-[var(--brand-link)]">
-                        {pillar.num}
-                      </span>
-                      <h3 className="font-display mt-3 text-xl font-bold text-[var(--ink)]">
+                      <div className="flex items-center justify-between">
+                        <span className="inline-flex h-7 w-7 items-center justify-center rounded-md bg-[var(--paper-elevated)] font-mono-tech text-xs font-bold text-[var(--brand-link)] border border-[var(--line)]">
+                          {pillar.num}
+                        </span>
+                        <span className="h-1.5 w-1.5 rounded-full bg-[var(--brand-sky)] opacity-0 transition-opacity group-hover:opacity-100" />
+                      </div>
+                      <h3 className="font-display mt-4 text-xl font-bold text-[var(--ink)] group-hover:text-[var(--brand-royal)] transition-colors">
                         {pillar.title}
                       </h3>
                     </div>
-                    <p className="mt-3 text-sm leading-relaxed text-[var(--text-muted)]">
+                    <p className="mt-4 text-sm leading-relaxed text-[var(--text-muted)]">
                       {pillar.body}
                     </p>
                   </article>

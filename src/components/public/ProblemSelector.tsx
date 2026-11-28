@@ -72,19 +72,27 @@ export function ProblemSelector() {
           })}
         </div>
 
-        <div className="mt-8 flex flex-col items-start justify-between gap-4 rounded-[var(--radius-md)] border border-[var(--line-control)] bg-white p-6 sm:flex-row sm:items-center">
-          <div>
-            <p className="eyebrow text-[var(--text-muted)]">Recommended Engagement Track</p>
-            <p className="font-display mt-1 text-xl font-bold text-[var(--ink)]">
+        <div className="mt-8 flex flex-col items-start justify-between gap-6 rounded-[var(--radius-md)] border border-[var(--line)] bg-white p-6 sm:p-7 shadow-xs sm:flex-row sm:items-center">
+          <div className="space-y-1.5">
+            <div className="flex items-center gap-2">
+              <span className="eyebrow text-[var(--brand-link)]">Recommended Engagement Track</span>
+              <span className="rounded-full bg-emerald-50 text-emerald-700 px-2 py-0.5 text-[10px] font-mono-tech border border-emerald-200">
+                Direct Sprint
+              </span>
+            </div>
+            <p className="font-display text-xl sm:text-2xl font-bold text-[var(--ink)]">
               {current.recommendation}
+            </p>
+            <p className="text-xs text-[var(--text-muted)]">
+              Includes comprehensive discovery, PostgreSQL architecture scoping, and weekly staging deployments.
             </p>
           </div>
           <Link
             href={`/contact?service=${encodeURIComponent(current.id)}`}
-            className="inline-flex min-h-[44px] flex-shrink-0 items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--ink)] px-6 py-3 text-sm font-semibold text-white hover:bg-[var(--ink-elevated)]"
+            className="group inline-flex min-h-[48px] flex-shrink-0 items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--ink)] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-[var(--ink-elevated)] hover:-translate-y-0.5 motion-reduce:transform-none"
           >
-            Scope this challenge
-            <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            <span>Scope this challenge</span>
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none" aria-hidden="true" />
           </Link>
         </div>
       </div>

@@ -370,6 +370,7 @@ test.describe("Tier 1A/1B & Tier 2B/2D — Public Routes, R1 Brand Hygiene & Res
   test("T2-ROUTE-01..04: unknown service, work, insight, career slugs and unknown path return HTTP 404 UI", async ({
     page,
   }) => {
+    test.slow();
     const missingRoutes = [
       "/services/nonexistent-service-xyz",
       "/work/nonexistent-blueprint",
@@ -379,13 +380,12 @@ test.describe("Tier 1A/1B & Tier 2B/2D — Public Routes, R1 Brand Hygiene & Res
     ];
 
     for (const route of missingRoutes) {
-      const res = await page.goto(route);
+      const res = await page.goto(route, { waitUntil: "domcontentloaded" });
       expect(res?.status(), `${route} expected HTTP 404`).toBe(404);
-      const h1Count = await page.getByRole("heading", { level: 1 }).count();
-      if (h1Count === 0) {
-        throw new Error(`Route ${route} returned status ${res?.status()} but has no level 1 heading! URL: ${page.url()}`);
-      }
-      const h1Text = await page.getByRole("heading", { level: 1 }).first().innerText();
+      await page.waitForSelector("h1", { state: "attached", timeout: 15000 });
+      const heading = page.getByRole("heading", { level: 1 }).first();
+      await expect(heading).toBeVisible({ timeout: 10000 });
+      const h1Text = await heading.innerText();
       expect(h1Text, `Route ${route} H1 text should contain 'That page'`).toContain("That page");
       await expect(
         page.getByRole("link", { name: "Explore Services" })

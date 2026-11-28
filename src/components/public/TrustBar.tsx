@@ -27,13 +27,13 @@ export function TrustBar({ items }: TrustBarProps) {
       <div className="container-arch">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item, i) => (
-            <AnimatedSection key={item.label} delay={i * 80} className="flex items-start gap-4">
-              <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-[var(--radius-sm)] bg-[var(--paper-elevated)] text-[var(--brand-cobalt)]">
+            <AnimatedSection key={item.label} delay={i * 80} className="group flex items-start gap-4 rounded-xl border border-transparent p-3 transition-colors hover:border-[var(--line)] hover:bg-[var(--paper-elevated)]">
+              <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg bg-[var(--paper-elevated)] text-[var(--brand-cobalt)] transition-colors group-hover:bg-[var(--brand-royal)] group-hover:text-white border border-[var(--line)] shadow-xs">
                 {item.icon}
               </span>
               <div>
                 <p className="font-display text-sm font-bold text-[var(--ink)]">{item.label}</p>
-                <p className="mt-0.5 text-xs leading-relaxed text-[var(--text-muted)]">{item.sub}</p>
+                <p className="mt-1 text-xs leading-relaxed text-[var(--text-muted)]">{item.sub}</p>
               </div>
             </AnimatedSection>
           ))}

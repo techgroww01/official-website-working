@@ -1,6 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const rawBaseUrl = process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:3000";
+const rawBaseUrl = process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:3000";
 const baseURL = rawBaseUrl.replace(/\/+$/, "");
 const parsedBaseUrl = new URL(baseURL);
 const serverHost = parsedBaseUrl.hostname || "127.0.0.1";

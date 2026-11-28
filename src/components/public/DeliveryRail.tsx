@@ -8,30 +8,35 @@ const STAGES = [
     name: "Understand",
     title: "Understand the business problem",
     desc: "Direct sessions with engineering principals to uncover constraints, user workflows, and integration dependencies before touching code.",
+    deliverables: ["Constraint Map", "Stakeholder Workflows", "Integration Audits"],
   },
   {
     num: "02",
     name: "Architect",
     title: "Architect & scope cleanly",
     desc: "Relational PostgreSQL models, RBAC permissions, security boundaries, and UI prototypes approved up front.",
+    deliverables: ["PostgreSQL Schema", "RBAC Matrix", "Interactive Wireframes"],
   },
   {
     num: "03",
     name: "Build",
     title: "Iterative engineering build",
     desc: "Weekly staging previews tied directly to Git commits so leadership evaluates working software instead of status slides.",
+    deliverables: ["Weekly Staging Previews", "Atomic Git Commits", "CI/CD Pipeline"],
   },
   {
     num: "04",
     name: "Verify",
     title: "Verify quality & security",
     desc: "Automated type safety, unit/RBAC tests, accessibility checks, and security headers verified prior to DNS cutover.",
+    deliverables: ["WCAG 2.2 AA Audit", "RBAC Security Tests", "OWASP Header Checks"],
   },
   {
     num: "05",
     name: "Support",
     title: "Accountable launch & support",
     desc: "Clean production cutover, team onboarding, documented repositories, and responsive post-launch operational maintenance.",
+    deliverables: ["DNS Production Cutover", "Architecture Runbook", "Post-Launch SLAs"],
   },
 ];
 
@@ -104,10 +109,10 @@ export function DeliveryRail() {
                     refs.current[i] = el;
                   }}
                   data-stage-idx={i}
-                  className={`rounded-[var(--radius-md)] border p-6 transition-colors ${
+                  className={`rounded-[var(--radius-md)] border p-6 transition-all duration-200 ${
                     active
-                      ? "border-[var(--brand-royal)] bg-[var(--paper-elevated)]"
-                      : "border-[var(--line)] bg-white"
+                      ? "border-[var(--brand-royal)] border-l-4 border-l-[var(--brand-royal)] bg-white shadow-sm"
+                      : "border-[var(--line)] bg-white/70 hover:bg-white"
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -122,6 +127,16 @@ export function DeliveryRail() {
                   <p className="mt-2 text-sm leading-relaxed text-[var(--text-muted)]">
                     {stage.desc}
                   </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {stage.deliverables.map((chip) => (
+                      <span
+                        key={chip}
+                        className="rounded-[var(--radius-sm)] border border-[var(--line)] bg-[var(--paper-elevated)] px-2.5 py-1 font-mono-tech text-[11px] text-[var(--ink)]"
+                      >
+                        {chip}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               );
             })}

@@ -109,8 +109,10 @@ export function InteractiveBlueprint({ services }: { services: PublicServiceItem
                   onFocus={() => setActiveIndex(idx)}
                   onClick={() => setActiveIndex(idx)}
                   aria-current={isSelected ? "true" : undefined}
-                  className={`flex w-full items-start justify-between gap-4 px-4 py-5 text-left transition-colors ${
-                    isSelected ? "bg-[var(--paper-elevated)]" : "hover:bg-[var(--paper-elevated)]/60"
+                  className={`flex w-full items-start justify-between gap-4 px-5 py-5 text-left transition-all ${
+                    isSelected
+                      ? "bg-white shadow-xs border-l-4 border-l-[var(--brand-royal)] text-[var(--ink)]"
+                      : "border-l-4 border-l-transparent hover:bg-[var(--paper-elevated)]/80 text-[var(--ink)]"
                   }`}
                 >
                   <div className="space-y-1">

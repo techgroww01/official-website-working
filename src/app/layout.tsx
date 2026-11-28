@@ -4,6 +4,7 @@ import { IBM_Plex_Mono, IBM_Plex_Sans, Outfit } from "next/font/google";
 import { COMPANY_CONFIG } from "@/lib/company-config";
 import { MotionProvider } from "@/components/brand/MotionProvider";
 import { CookieBanner } from "@/components/public/CookieBanner";
+import { ScrollManager } from "@/components/public/ScrollManager";
 import "./globals.css";
 
 const fontDisplay = Outfit({
@@ -100,6 +101,7 @@ export default async function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
         <MotionProvider>
+          <ScrollManager />
           {children}
           <CookieBanner gaMeasurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
         </MotionProvider>
