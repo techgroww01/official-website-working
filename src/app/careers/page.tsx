@@ -106,8 +106,8 @@ export default async function CareersPage() {
                     Current requisitions
                   </h2>
                 </div>
-                <span className="font-mono-tech text-xs text-[var(--status-warn)]">
-                  Status gate (`C-12`) · roles verified before publish
+                <span className="font-mono-tech text-xs text-[var(--brand-link)]">
+                  Active Hiring Cycles · Direct Engineering Review
                 </span>
               </div>
             </AnimatedSection>

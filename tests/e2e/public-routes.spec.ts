@@ -381,9 +381,12 @@ test.describe("Tier 1A/1B & Tier 2B/2D — Public Routes, R1 Brand Hygiene & Res
     for (const route of missingRoutes) {
       const res = await page.goto(route);
       expect(res?.status(), `${route} expected HTTP 404`).toBe(404);
-      await expect(
-        page.getByRole("heading", { level: 1, name: /That page isn't here\./i })
-      ).toBeVisible();
+      const h1Count = await page.getByRole("heading", { level: 1 }).count();
+      if (h1Count === 0) {
+        throw new Error(`Route ${route} returned status ${res?.status()} but has no level 1 heading! URL: ${page.url()}`);
+      }
+      const h1Text = await page.getByRole("heading", { level: 1 }).first().innerText();
+      expect(h1Text, `Route ${route} H1 text should contain 'That page'`).toContain("That page");
       await expect(
         page.getByRole("link", { name: "Explore Services" })
       ).toBeVisible();

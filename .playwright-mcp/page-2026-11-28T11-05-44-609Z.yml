@@ -1,0 +1,139 @@
+- generic [active] [ref=f5e1]:
+  - button "Open Next.js Dev Tools" [ref=f5e7] [cursor=pointer]
+  - link "Skip to main content" [ref=f5e11] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f5e12]:
+    - generic [ref=f5e13]:
+      - link "Tech Groww Home" [ref=f5e14] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f5e23]:
+          - generic [ref=f5e24]: TECH
+          - generic [ref=f5e26]: GROWW
+      - navigation "Primary Navigation" [ref=f5e27]:
+        - link "Services" [ref=f5e28] [cursor=pointer]:
+          - /url: /services
+        - link "Work" [ref=f5e30] [cursor=pointer]:
+          - /url: /work
+        - link "About" [ref=f5e31] [cursor=pointer]:
+          - /url: /about
+        - link "Insights" [ref=f5e32] [cursor=pointer]:
+          - /url: /insights
+        - link "Careers" [ref=f5e33] [cursor=pointer]:
+          - /url: /careers
+        - link "Contact" [ref=f5e34] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f5e35]:
+        - link "Portal Sign In" [ref=f5e36] [cursor=pointer]:
+          - /url: /login
+        - link "Start a project" [ref=f5e37] [cursor=pointer]:
+          - /url: /contact
+  - main [ref=f5e41]:
+    - generic [ref=f5e42]:
+      - paragraph [ref=f5e43]: Error 404 · Route Not Found
+      - heading "That page isn't here." [level=1] [ref=f5e44]
+      - paragraph [ref=f5e45]: Legacy PHP endpoints from earlier site versions redirect automatically or have been retired. Explore our current capabilities or get in touch below.
+      - generic [ref=f5e46]:
+        - link "Explore Services" [ref=f5e47] [cursor=pointer]:
+          - /url: /services
+        - link "Reference Blueprints" [ref=f5e48] [cursor=pointer]:
+          - /url: /work
+        - link "Contact Tech Groww" [ref=f5e49] [cursor=pointer]:
+          - /url: /contact
+  - contentinfo [ref=f5e50]:
+    - generic [ref=f5e51]:
+      - generic [ref=f5e52]:
+        - generic [ref=f5e53]:
+          - generic [ref=f5e62]:
+            - generic [ref=f5e63]: TECH
+            - generic [ref=f5e65]: GROWW
+          - paragraph [ref=f5e66]: Technology That Drives Growth. Founded 2026 in Greater Noida, Uttar Pradesh 203209, India.
+          - generic [ref=f5e67]:
+            - link "LinkedIn" [ref=f5e68] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/tech-growww
+            - link "Instagram" [ref=f5e73] [cursor=pointer]:
+              - /url: https://www.instagram.com/info_techgroww.co.in/
+        - generic [ref=f5e78]:
+          - generic [ref=f5e79]:
+            - heading "Company" [level=2] [ref=f5e80]
+            - list [ref=f5e81]:
+              - listitem [ref=f5e82]:
+                - link "About Tech Groww" [ref=f5e83] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=f5e84]:
+                - link "Reference Blueprints" [ref=f5e85] [cursor=pointer]:
+                  - /url: /work
+              - listitem [ref=f5e86]:
+                - link "Insights & Guides" [ref=f5e87] [cursor=pointer]:
+                  - /url: /insights
+              - listitem [ref=f5e88]:
+                - link "Careers" [ref=f5e89] [cursor=pointer]:
+                  - /url: /careers
+              - listitem [ref=f5e90]:
+                - link "Internships" [ref=f5e91] [cursor=pointer]:
+                  - /url: /careers/internships
+          - generic [ref=f5e92]:
+            - heading "Capabilities" [level=2] [ref=f5e93]
+            - list [ref=f5e94]:
+              - listitem [ref=f5e95]:
+                - link "Web & Mobile" [ref=f5e96] [cursor=pointer]:
+                  - /url: /services/web-mobile-engineering
+              - listitem [ref=f5e97]:
+                - link "Salesforce & OmniStudio" [ref=f5e98] [cursor=pointer]:
+                  - /url: /services/salesforce-solutions
+              - listitem [ref=f5e99]:
+                - link "UI/UX Design" [ref=f5e100] [cursor=pointer]:
+                  - /url: /services/ui-ux-design
+              - listitem [ref=f5e101]:
+                - link "Enterprise Software" [ref=f5e102] [cursor=pointer]:
+                  - /url: /services/enterprise-software
+              - listitem [ref=f5e103]:
+                - link "IT Consulting" [ref=f5e104] [cursor=pointer]:
+                  - /url: /services/it-consulting
+          - generic [ref=f5e105]:
+            - heading "Legal & Reach" [level=2] [ref=f5e106]
+            - list [ref=f5e107]:
+              - listitem [ref=f5e108]:
+                - link "Privacy (DPDP)" [ref=f5e109] [cursor=pointer]:
+                  - /url: /privacy
+              - listitem [ref=f5e110]:
+                - link "Terms of Use" [ref=f5e111] [cursor=pointer]:
+                  - /url: /terms
+              - listitem [ref=f5e112]:
+                - link "Cookie Policy" [ref=f5e113] [cursor=pointer]:
+                  - /url: /cookies
+              - listitem [ref=f5e114]:
+                - link "contact@techgroww.co.in" [ref=f5e115] [cursor=pointer]:
+                  - /url: mailto:contact@techgroww.co.in
+        - generic [ref=f5e116]:
+          - heading "Engineering Briefs" [level=2] [ref=f5e117]
+          - paragraph [ref=f5e118]: Receive occasional technical notes and hiring updates. One-click unsubscribe anytime.
+          - generic [ref=f5e119]:
+            - generic [ref=f5e120]:
+              - generic [ref=f5e121]: Work email address
+              - textbox "Work email address" [ref=f5e122]:
+                - /placeholder: you@company.com
+            - generic [ref=f5e123] [cursor=pointer]:
+              - checkbox "I agree to the Privacy Policy (DPDP Act 2023)." [ref=f5e124]
+              - generic [ref=f5e125]:
+                - text: I agree to the
+                - link "Privacy Policy" [ref=f5e126]:
+                  - /url: /privacy
+                - text: (DPDP Act 2023).
+            - button "Subscribe" [ref=f5e127]
+      - generic [ref=f5e129]:
+        - paragraph [ref=f5e130]: © 2026 Tech Groww. All rights reserved.
+        - paragraph [ref=f5e131]: Greater Noida, Uttar Pradesh 203209, India
+  - complementary "Cookie consent notice" [ref=f5e132]:
+    - generic [ref=f5e133]:
+      - generic [ref=f5e134]:
+        - paragraph [ref=f5e135]:
+          - generic [ref=f5e139]: Privacy & Cookie Preferences
+        - paragraph [ref=f5e140]:
+          - text: Strictly necessary session cookies keep portals secure. Analytics remain disabled unless you opt in.
+          - link "Cookie Policy" [ref=f5e141] [cursor=pointer]:
+            - /url: /cookies
+          - text: .
+      - generic [ref=f5e142]:
+        - button "Essential only" [ref=f5e143]
+        - button "Allow analytics" [ref=f5e144]
+  - alert [ref=f5e145]

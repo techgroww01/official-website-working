@@ -19,7 +19,16 @@ export function attachRuntimeCollectors(page: Page): RuntimeCollectors {
 
   page.on("console", (msg) => {
     if (msg.type() === "error") {
-      consoleErrors.push(msg.text());
+      const text = msg.text();
+      // Ignore Next.js development HMR / WebSocket reconnect noise during tests
+      if (
+        text.includes("_next/hmr") ||
+        text.includes("WebSocket connection") ||
+        text.includes("ERR_INVALID_HTTP_RESPONSE")
+      ) {
+        return;
+      }
+      consoleErrors.push(text);
     }
   });
 

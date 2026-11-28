@@ -27,7 +27,7 @@ export default async function InternshipsPage() {
               Structured 2-Month Internships with Real Mentorship.
             </h1>
             <p className="mt-5 text-lg text-slate-300">
-              Accepted interns onboard inside our dedicated Intern Portal (`/intern`) with cohort
+              Accepted interns onboard inside our dedicated Intern Portal (/intern) with cohort
               checklists, assigned mentor tasks, private review rubrics, an official offer letter,
               and a verifiable PDF completion certificate.
             </p>

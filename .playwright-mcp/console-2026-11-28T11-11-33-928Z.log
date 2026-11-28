@@ -1,0 +1,63 @@
+[      98ms] [LOG] [Fast Refresh] done in 8ms @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_05y3oi5z9mc_3._.js:761
+[     398ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_05y3oi5z9mc_3._.js:761
+[     442ms] [LOG] [HMR] connected @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_05y3oi5z9mc_3._.js:761
+[     885ms] [ERROR] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} renderTree={{...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <ScrollProgress>
+                <SiteHeader>
+                <main>
+                <SiteFooter>
+                  <footer className="surface-da...">
+                    <div className="container-...">
+                      <div className="grid gap-1...">
+                        <div>
+                        <div>
+                        <div className="lg:col-spa...">
+                          <h2>
+                          <p>
+                          <form onSubmit={function handleNewsletter} className="mt-4 space...">
+                            <div>
+                              <label>
+                              <input
+                                id="footer-newsletter-email"
+                                type="email"
+                                required={true}
+                                value=""
+                                onChange={function onChange}
+                                placeholder="you@company.com"
+                                className="min-h-[44px] w-full rounded-[var(--radius-sm)] border border-white/25 bg-[v..."
+-                               style={{caret-color:"transparent"}}
+                              >
+                            <label htmlFor="footer-new..." className="flex items...">
+                              <input
+                                id="footer-newsletter-consent"
+                                type="checkbox"
+                                checked={false}
+                                onChange={function onChange}
+                                className="mt-0.5 h-4 w-4 accent-[var(--brand-sky)]"
+-                               style={{caret-color:"transparent"}}
+                              >
+                              ...
+                            ...
+                      ...
+            ...
+          ...
+ @ http://localhost:3000/_next/static/chunks/node_modules_next_dist_05y3oi5z9mc_3._.js:1037

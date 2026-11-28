@@ -71,28 +71,22 @@ export function HeroAnimated() {
         animate="visible"
         className="relative z-10"
       >
-        <motion.p variants={itemVariants} className="eyebrow text-[var(--brand-sky)]">
-          Greater Noida, Uttar Pradesh · Engineering Since 2026
+        <motion.p variants={itemVariants} className="eyebrow text-[var(--brand-sky)] font-medium tracking-[0.2em]">
+          Greater Noida, Uttar Pradesh · Engineering Studio
         </motion.p>
 
         <motion.h1
           variants={itemVariants}
-          className="font-display mt-5 text-[clamp(2.65rem,7.2vw,5.75rem)] font-extrabold leading-[0.94] tracking-[-0.045em] text-white"
+          className="font-display mt-4 text-[clamp(2.5rem,5.5vw,4.5rem)] font-bold leading-[1.05] tracking-[-0.03em] text-white"
         >
           Technology that
           <br />
-          <span className="relative inline-block">
-            <span className="relative z-10">drives growth.</span>
-            <span
-              aria-hidden="true"
-              className="absolute inset-x-0 bottom-1 h-[3px] rounded-full bg-gradient-to-r from-[var(--brand-sky)] via-[var(--brand-cobalt)] to-transparent motion-reduce:hidden"
-            />
-          </span>
+          <span className="text-white">drives growth.</span>
         </motion.h1>
 
         <motion.p
           variants={itemVariants}
-          className="mt-6 max-w-2xl text-[clamp(1.02rem,1.4vw,1.18rem)] leading-relaxed text-slate-300"
+          className="mt-5 max-w-xl text-[clamp(1rem,1.2vw,1.125rem)] leading-relaxed text-slate-300 font-normal"
         >
           Engineering software, Salesforce workflows, and digital products around
           real business bottlenecks — direct principal accountability from scope to
@@ -125,11 +119,11 @@ export function HeroAnimated() {
 
         <motion.dl
           variants={itemVariants}
-          className="mt-12 grid grid-cols-1 gap-4 border-t border-white/15 pt-6 sm:grid-cols-3"
+          className="mt-10 grid grid-cols-3 gap-6 border-t border-white/10 pt-6"
         >
-          <StatCounter value="2026" label="Founded" delay={500} />
-          <StatCounter value="Greater Noida" label="Headquarters" delay={600} />
-          <StatCounter value="6 Disciplines" label="Core Focus" delay={700} />
+          <StatCounter value="2026" label="Established" delay={400} />
+          <StatCounter value="Delhi NCR" label="Greater Noida HQ" delay={500} />
+          <StatCounter value="6 Disciplines" label="Full-Stack & Cloud" delay={600} />
         </motion.dl>
       </motion.div>
     </div>

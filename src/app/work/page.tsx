@@ -46,7 +46,7 @@ export default async function WorkPage() {
                 <span className="text-[var(--text-muted)]">
                   Items marked <strong className="text-[var(--ink)]">Reference Blueprint</strong> are
                   internal architectural demonstrations. <strong className="text-[var(--ink)]">Client Work</strong> items
-                  are only published after written client consent (gate C-08).
+                  are published strictly following formal client approval.
                 </span>
               </div>
             </AnimatedSection>

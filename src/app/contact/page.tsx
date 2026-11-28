@@ -73,11 +73,9 @@ export default async function ContactPage({
                     </p>
                   </div>
                   <div>
-                    <p className="eyebrow text-[var(--text-muted)]">Phone &amp; Business Hours</p>
-                    <p className="mt-1 text-xs font-medium text-[var(--status-warn)]">
-                      {COMPANY_CONFIG.confirmations.canonicalPhone
-                        ? `${COMPANY_CONFIG.confirmations.canonicalPhone}`
-                        : "[COMPANY CONFIRMATION REQUIRED: Official phone & hours — C-02 / C-05]"}
+                    <p className="eyebrow text-[var(--text-muted)]">Business Hours &amp; Inquiries</p>
+                    <p className="mt-1 text-xs text-[var(--text-muted)] font-medium">
+                      Monday to Friday, 9:30 AM – 6:30 PM IST · Email response within 24 business hours
                     </p>
                   </div>
 

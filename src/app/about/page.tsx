@@ -146,13 +146,11 @@ export default function AboutPage() {
 
             <AnimatedSection delay={100} className="mt-8">
               <div className="rounded-[var(--radius-md)] border border-[var(--line-control)] bg-[var(--paper-elevated)] p-6">
-                <p className="font-mono-tech text-xs font-semibold text-[var(--status-warn)]">
-                  TEAM PROFILE VERIFICATION GATE (`C-07`)
+                <p className="font-display text-sm font-semibold text-[var(--ink)]">
+                  Leadership Profiles &amp; Direct Engagement
                 </p>
                 <p className="mt-2 text-sm text-[var(--text-muted)]">
-                  Team bios, approved designations, and portraits (<code>team_members.is_public = true</code>) are
-                  managed via the Admin CMS Portal (<code>/admin/team</code>) and publish here once formal
-                  written profile consent is toggled.
+                  Our engineering principals collaborate directly on client engagements from initial technical architecture through production delivery and ongoing maintenance.
                 </p>
               </div>
             </AnimatedSection>

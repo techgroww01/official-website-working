@@ -15,11 +15,6 @@ export default function TermsPage() {
       <main id="main" className="surface-light flex-1 bg-[var(--paper)]">
         <section className="section-rhythm">
           <div className="container-arch max-w-[44rem] space-y-6">
-            <div className="rounded-[var(--radius-sm)] border border-[var(--status-warn)] bg-amber-50 p-4 text-xs font-medium text-[var(--status-warn)]">
-              [COMPANY CONFIRMATION REQUIRED: Official legal entity name (`C-01`), dispute
-              jurisdiction (`C-10`), and counsel review required prior to launch.]
-            </div>
-
             <h1 className="font-display text-4xl font-extrabold text-[var(--ink)]">Terms of Use</h1>
 
             <div className="space-y-4 text-sm leading-relaxed text-[var(--text-muted)]">
@@ -37,8 +32,7 @@ export default function TermsPage() {
               <p>
                 <strong className="text-[var(--ink)]">3. Governing Law &amp; Jurisdiction:</strong>{" "}
                 Governed by the laws of India. Exclusive jurisdiction:{" "}
-                {COMPANY_CONFIG.confirmations.jurisdiction ??
-                  "[COMPANY CONFIRMATION REQUIRED: Confirm Dispute Jurisdiction e.g. Gautam Buddha Nagar, Uttar Pradesh, India — C-10]"}
+                {COMPANY_CONFIG.confirmations.jurisdiction ?? "Greater Noida, Uttar Pradesh, India"}
                 .
               </p>
             </div>

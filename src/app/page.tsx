@@ -53,9 +53,10 @@ export default async function HomePage() {
       <SiteHeader polarity="dark" />
 
       <main id="main" className="flex-1">
-        {/* 1. Editorial Dark Ink Hero — Animated with Motion, SSR fallback for LCP */}
-        <section className="surface-dark relative overflow-hidden bg-[var(--ink)] pt-14 pb-20 text-white sm:pt-20 sm:pb-24">
-          <div className="tg-accent-draw h-[2px] w-full bg-gradient-to-r from-[var(--brand-sky)] via-[var(--brand-cobalt)] to-transparent mb-10" />
+        {/* 1. Editorial Dark Ink Hero — Premium architectural spacing */}
+        <section className="surface-dark relative overflow-hidden bg-[var(--ink)] pt-10 pb-16 text-white sm:pt-14 sm:pb-20">
+          {/* Subtle top accent hairline */}
+          <div className="tg-accent-draw h-[1px] w-full bg-gradient-to-r from-transparent via-[var(--brand-sky)]/40 to-transparent mb-8" />
 
           {/* Architectural grid background */}
           <div
@@ -75,8 +76,8 @@ export default async function HomePage() {
             </div>
 
             {/* GrowthSignal vector architectural diagram */}
-            <div className="hidden min-[480px]:flex justify-center lg:col-span-4 lg:justify-end">
-              <GrowthSignal className="h-44 w-44 sm:h-56 sm:w-56 lg:h-80 lg:w-80 drop-shadow-[0_0_40px_rgba(56,189,248,0.18)]" />
+            <div className="hidden md:flex justify-center lg:col-span-4 lg:justify-end">
+              <GrowthSignal className="h-52 w-52 sm:h-64 sm:w-64 lg:h-72 lg:w-72 drop-shadow-[0_0_24px_rgba(56,189,248,0.12)]" />
             </div>
           </div>
         </section>
