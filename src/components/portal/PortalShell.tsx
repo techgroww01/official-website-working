@@ -13,6 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { TechGrowwLogo } from "@/components/brand/TechGrowwLogo";
+import { PortalViewTransition } from "./PortalViewTransition";
 import type { PortalKey } from "@/lib/rbac/roles";
 
 export interface PortalNavItem {
@@ -43,6 +44,10 @@ const PORTAL_LABELS: Record<PortalKey, { name: string; href: string }> = {
   intern: { name: "Intern Portal", href: "/intern" },
 };
 
+const PORTAL_ROOT_HREFS = new Set(
+  Object.values(PORTAL_LABELS).map((item) => item.href)
+);
+
 const ARCHITECTURAL_EASE = [0.16, 1, 0.3, 1] as const;
 
 export function PortalShell({
@@ -64,7 +69,7 @@ export function PortalShell({
   const mobileBtnRef = useRef<HTMLButtonElement>(null);
 
   const isNavItemActive = (href: string) =>
-    href === `/${portal}`
+    PORTAL_ROOT_HREFS.has(href)
       ? pathname === href
       : pathname === href || pathname.startsWith(`${href}/`);
 
@@ -282,7 +287,7 @@ export function PortalShell({
         </aside>
 
         {/* Main Content Area */}
-        <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+        <div className="flex min-w-0 flex-1 flex-col overflow-x-hidden">
           {/* Top Header */}
           <header className="flex h-16 items-center justify-between border-b border-[var(--line-control)] bg-[var(--portal-surface)] px-4 lg:px-8">
             <div className="flex min-w-0 items-center gap-3">
@@ -439,14 +444,9 @@ export function PortalShell({
 
           {/* Portal Body */}
           <main id="portal-main" className="flex-1 overflow-y-auto p-4 lg:p-8">
-            <motion.div
-              key={pathname}
-              initial={{ opacity: 0.92, y: 4 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.16, ease: ARCHITECTURAL_EASE }}
-            >
+            <PortalViewTransition transitionKey={pathname}>
               {children}
-            </motion.div>
+            </PortalViewTransition>
           </main>
         </div>
       </div>

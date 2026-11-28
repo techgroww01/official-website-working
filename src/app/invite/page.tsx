@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { TechGrowwLogo } from "@/components/brand/TechGrowwLogo";
@@ -10,24 +10,19 @@ function InviteAcceptForm() {
   const searchParams = useSearchParams();
   const queryToken = searchParams.get("token") ?? "";
 
-  const [token, setToken] = useState(queryToken);
+  const [manualToken, setManualToken] = useState<string | null>(null);
+  const token = manualToken ?? queryToken;
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
   const [status, setStatus] = useState<{ ok: boolean; msg: string } | null>(null);
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    if (queryToken) {
-      setToken(queryToken);
-    }
-  }, [queryToken]);
 
   async function handleAccept(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
     try {
-      const resolvedToken = queryToken || token;
+      const resolvedToken = token.trim();
       const res = await fetch("/api/v1/invitations/accept", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -78,7 +73,7 @@ function InviteAcceptForm() {
             type="text"
             required
             value={token}
-            onChange={(e) => setToken(e.target.value)}
+            onChange={(e) => setManualToken(e.target.value)}
             placeholder="Paste token from email if needed"
             className="mt-1.5 min-h-[44px] w-full rounded-[var(--radius-sm)] border border-[var(--line-control)] bg-white px-3.5 font-mono-tech text-xs text-[var(--ink)]"
           />

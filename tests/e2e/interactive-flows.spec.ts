@@ -33,8 +33,8 @@ test.describe("Tier 1D/1E, Tier 2A & Tier 3 — Interactive Widgets, Loading Sta
     await expect(region).toHaveAttribute("data-paused", "true");
 
     const pausedState = await region.evaluate((el) => {
-      const track = el.querySelector(".tg-marquee-track");
-      return track ? window.getComputedStyle(track).animationPlayState : "";
+      const track = el.querySelector('div[aria-hidden="true"] > div');
+      return track ? window.getComputedStyle(track).animationPlayState : null;
     });
     expect(pausedState).toBe("paused");
 
@@ -413,11 +413,29 @@ test.describe("Tier 1D/1E, Tier 2A & Tier 3 — Interactive Widgets, Loading Sta
 
   test("T1-FORM-05: ForgotPasswordPage submits cleanly and shows Sign In link", async ({
     page,
-  }) => {
+    context,
+  }, testInfo) => {
+    test.skip(
+      testInfo.project.name !== "desktop-chromium",
+      "Rate-limit isolation: forgot-password form submission runs on desktop-chromium with unique IP"
+    );
+
     await preSeedCookieConsent(page, "essential");
+    await context.setExtraHTTPHeaders({
+      "x-real-ip": uniqueTestIp(1, 14),
+    });
+
     await page.goto("/forgot-password");
     await page.getByLabel("Account Email").fill("user@example.com");
-    await page.getByRole("button", { name: "Send Recovery Link" }).click();
+    const [res] = await Promise.all([
+      page.waitForResponse(
+        (r) =>
+          r.url().includes("/api/v1/auth/forgot-password") &&
+          r.request().method() === "POST"
+      ),
+      page.getByRole("button", { name: "Send Recovery Link" }).click(),
+    ]);
+    expect(res.status()).toBe(200);
     await expect(page.getByText(/Request processed\./i)).toBeVisible();
     await expect(
       page.getByRole("link", { name: "Sign In" })

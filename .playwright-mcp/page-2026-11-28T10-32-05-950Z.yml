@@ -1,0 +1,33 @@
+- generic [active] [ref=f4e1]:
+  - link "Skip to main content" [ref=f4e2] [cursor=pointer]:
+    - /url: "#main"
+  - main [ref=f4e3]:
+    - generic [ref=f4e4]:
+      - generic [ref=f4e5]:
+        - link "Back to Tech Groww public site" [ref=f4e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f4e15]:
+            - generic [ref=f4e16]: TECH
+            - generic [ref=f4e18]: GROWW
+        - generic [ref=f4e19]: Portal Sign In
+      - heading "Sign in to Tech Groww" [level=1] [ref=f4e20]
+      - paragraph [ref=f4e21]: Unified sign-in for Staff (@techgroww.co.in), Client, and Intern portals.
+      - generic [ref=f4e22]: Workspace authentication runs in unconfigured local preview mode until Supabase environment credentials are provided.
+      - button "Continue with Google Workspace (@techgroww.co.in)" [ref=f4e23]
+      - generic [ref=f4e24]: OR EMAIL & PASSWORD
+      - generic [ref=f4e28]:
+        - generic [ref=f4e29]:
+          - generic [ref=f4e30]: Email Address
+          - textbox "Email Address" [ref=f4e31]
+        - generic [ref=f4e32]:
+          - generic [ref=f4e33]:
+            - generic [ref=f4e34]: Password
+            - link "Forgot password?" [ref=f4e35] [cursor=pointer]:
+              - /url: /forgot-password
+          - textbox "Password" [ref=f4e36]
+        - button "Sign In" [ref=f4e37]
+      - generic [ref=f4e39]:
+        - generic [ref=f4e40]: Invite-only portal access
+        - link "Back to website" [ref=f4e41] [cursor=pointer]:
+          - /url: /
+  - button "Open Next.js Dev Tools" [ref=f4e47] [cursor=pointer]

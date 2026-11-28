@@ -69,10 +69,23 @@ export async function PATCH(request: NextRequest) {
     return apiError("VALIDATION_ERROR", "Invalid user parameters", 400, formatZodError(parsed.error));
   }
 
-  // Prevent modifying super_admin roles without super_admin role
+  if (parsed.data.roleSlugs) {
+    const invalidRoles = parsed.data.roleSlugs.filter((slug) => !VALID_ROLE_SET.has(slug));
+    if (invalidRoles.length > 0) {
+      return apiError("INVALID_ROLE", "One or more role slugs are invalid", 400, {
+        invalidRoles,
+      });
+    }
+  }
+
+  // Hard invariants: prevent modifying/granting super_admin or self-role modification without super_admin
   const isSuperAdmin = auth.auth.roles.includes("super_admin");
   if (parsed.data.roleSlugs?.includes("super_admin") && !isSuperAdmin) {
     return apiError("FORBIDDEN_ROLE", "Only super_admin can grant super_admin privilege", 403);
+  }
+
+  if (!isSuperAdmin && parsed.data.userId === auth.auth.userId && parsed.data.roleSlugs) {
+    return apiError("SELF_ROLE_MODIFICATION_BLOCKED", "You cannot modify your own roles", 403);
   }
 
   // Prevent users from suspending themselves
@@ -86,12 +99,115 @@ export async function PATCH(request: NextRequest) {
 
   const admin = getSupabaseAdminClient();
 
-  if (parsed.data.status) {
-    await admin.from("users").update({ status: parsed.data.status }).eq("id", parsed.data.userId);
+  if (!isSuperAdmin) {
+    const { data: targetRoleRows, error: targetRoleErr } = await admin
+      .from("user_roles")
+      .select("role:roles(slug)")
+      .eq("user_id", parsed.data.userId);
 
-    // If suspended or deactivated, increment session_version to evict all active sessions immediately!
+    if (targetRoleErr) {
+      return apiError("DB_ERROR", "Failed to verify target user roles", 500);
+    }
+
+    const targetRoles = (targetRoleRows ?? []).flatMap((row) => {
+      const r = row as {
+        role?: { slug?: string } | Array<{ slug?: string }> | null;
+        roles?: { slug?: string } | Array<{ slug?: string }> | null;
+      };
+      const entry = r.role ?? r.roles;
+      if (Array.isArray(entry)) {
+        return entry.map((e) => e?.slug).filter((s): s is string => Boolean(s));
+      }
+      return entry?.slug ? [entry.slug] : [];
+    });
+
+    if (targetRoles.includes("super_admin")) {
+      return apiError("FORBIDDEN_ROLE", "Only super_admin can modify a super_admin account", 403);
+    }
+  }
+
+  let shouldBumpSessionVersion = false;
+
+  if (parsed.data.status) {
+    const { error: updateErr } = await admin
+      .from("users")
+      .update({ status: parsed.data.status })
+      .eq("id", parsed.data.userId);
+
+    if (updateErr) {
+      return apiError("DB_ERROR", "Failed to update user status", 500);
+    }
+
+    // If suspended or deactivated, increment session_version to evict all active sessions immediately
     if (parsed.data.status === "suspended" || parsed.data.status === "deactivated") {
-      await admin.rpc("increment_session_version", { p_user_id: parsed.data.userId });
+      shouldBumpSessionVersion = true;
+    }
+  }
+
+  if (parsed.data.roleSlugs !== undefined) {
+    const uniqueSlugs = Array.from(new Set(parsed.data.roleSlugs));
+    let resolvedRoles: Array<{ id: string; slug: string }> = [];
+
+    if (uniqueSlugs.length > 0) {
+      const { data: fetchedRoles, error: rolesErr } = await admin
+        .from("roles")
+        .select("id, slug")
+        .in("slug", uniqueSlugs);
+
+      if (rolesErr) {
+        return apiError("DB_ERROR", "Failed to resolve target roles", 500);
+      }
+
+      resolvedRoles = (fetchedRoles ?? []) as Array<{ id: string; slug: string }>;
+      if (resolvedRoles.length !== uniqueSlugs.length) {
+        return apiError("INVALID_ROLE", "One or more role slugs do not exist", 400);
+      }
+    }
+
+    const { error: deleteErr } = await admin
+      .from("user_roles")
+      .delete()
+      .eq("user_id", parsed.data.userId);
+
+    if (deleteErr) {
+      return apiError("DB_ERROR", "Failed to update user roles", 500);
+    }
+
+    if (resolvedRoles.length > 0) {
+      const { error: insertErr } = await admin.from("user_roles").insert(
+        resolvedRoles.map((role) => ({
+          user_id: parsed.data.userId,
+          role_id: role.id,
+          granted_by: auth.auth.userId,
+        }))
+      );
+
+      if (insertErr) {
+        return apiError("DB_ERROR", "Failed to assign user roles", 500);
+      }
+    }
+
+    shouldBumpSessionVersion = true;
+  }
+
+  if (shouldBumpSessionVersion) {
+    const rpcRes = await admin.rpc("increment_session_version", {
+      p_user_id: parsed.data.userId,
+    });
+    if (rpcRes?.error) {
+      // Fallback when increment_session_version RPC is absent in local DB
+      const { data: userRow } = await admin
+        .from("users")
+        .select("session_version")
+        .eq("id", parsed.data.userId)
+        .maybeSingle();
+
+      if (userRow && typeof userRow.session_version === "number") {
+        await admin
+          .from("users")
+          .update({ session_version: userRow.session_version + 1 })
+          .eq("id", parsed.data.userId);
+      }
     }
   }
 

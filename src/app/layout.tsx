@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { IBM_Plex_Mono, IBM_Plex_Sans, Outfit } from "next/font/google";
 import { COMPANY_CONFIG } from "@/lib/company-config";
 import { MotionProvider } from "@/components/brand/MotionProvider";
@@ -50,11 +51,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   const orgJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -93,6 +96,7 @@ export default function RootLayout({
         </a>
         <script
           type="application/ld+json"
+          nonce={nonce}
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
         <MotionProvider>

@@ -88,20 +88,34 @@ test.describe("Tier 1C, Tier 2A & Tier 3 — Portals, /notifications, Auth & Rec
     collectors.assertClean("auth entry pages");
   });
 
-  test("T1-PORTAL-06: GET /api/v1/public/certificates/TG-CERT-2026-DEMO returns 200 valid JSON", async ({
+  test("T1-PORTAL-06: GET /api/v1/public/certificates/[code] branches cleanly on databaseConfigured (503 vs 404, never 500)", async ({
     request,
   }) => {
+    const healthRes = await request.get("/api/v1/health");
+    expect(healthRes.status()).toBe(200);
+    const healthJson = (await healthRes.json()) as {
+      ok?: boolean;
+      data?: { databaseConfigured?: boolean };
+    };
+    const databaseConfigured = Boolean(healthJson.data?.databaseConfigured);
+
     const res = await request.get(
-      "/api/v1/public/certificates/TG-CERT-2026-DEMO"
+      "/api/v1/public/certificates/TG-CERT-NONEXISTENT"
     );
-    expect(res.status()).toBe(200);
+    expect(res.status()).not.toBe(500);
     const json = (await res.json()) as {
       ok?: boolean;
-      data?: { valid?: boolean; certificateCode?: string };
+      error?: { code?: string };
     };
-    expect(json.ok).toBe(true);
-    expect(json.data?.valid).toBe(true);
-    expect(json.data?.certificateCode).toBe("TG-CERT-2026-DEMO");
+    expect(json.ok).toBe(false);
+
+    if (databaseConfigured) {
+      expect(res.status()).toBe(404);
+      expect(json.error?.code).toBe("CERTIFICATE_NOT_FOUND");
+    } else {
+      expect(res.status()).toBe(503);
+      expect(json.error?.code).toBe("VERIFICATION_UNAVAILABLE");
+    }
   });
 
   test("T2-AUTH-01: /reset-password validates length/mismatch and /login renders role=alert cleanly on unconfigured auth", async ({
@@ -152,8 +166,18 @@ test.describe("Tier 1C, Tier 2A & Tier 3 — Portals, /notifications, Auth & Rec
 
   test("T3-FLOW-06: unauthenticated /client/projects -> /login?next=... -> /forgot-password -> /login", async ({
     page,
-  }) => {
+    context,
+  }, testInfo) => {
     await preSeedCookieConsent(page, "essential");
+    const projectOffset =
+      testInfo.project.name === "desktop-chromium"
+        ? 6
+        : testInfo.project.name === "tablet-chromium"
+        ? 7
+        : 8;
+    await context.setExtraHTTPHeaders({
+      "x-real-ip": uniqueTestIp(3, projectOffset),
+    });
 
     await page.goto("/client/projects");
     await expect(page).toHaveURL(/\/login\?next=%2Fclient%2Fprojects/);
@@ -161,7 +185,17 @@ test.describe("Tier 1C, Tier 2A & Tier 3 — Portals, /notifications, Auth & Rec
     await expect(page).toHaveURL(/\/forgot-password/);
 
     await page.getByLabel("Account Email").fill("client@example.com");
-    await page.getByRole("button", { name: "Send Recovery Link" }).click();
+    const [forgotRes] = await Promise.all([
+      page.waitForResponse(
+        (r) =>
+          r.url().includes("/api/v1/auth/forgot-password") &&
+          r.request().method() === "POST"
+      ),
+      page.getByRole("button", { name: "Send Recovery Link" }).click(),
+    ]);
+    expect(forgotRes.status()).toBe(200);
+    await expect(page.getByText(/Request processed\./i)).toBeVisible();
+
     await page.getByRole("link", { name: "Sign In" }).click();
     await expect(page).toHaveURL(/\/login$/);
   });

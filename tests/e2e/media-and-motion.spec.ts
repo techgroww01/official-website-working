@@ -30,10 +30,23 @@ test.describe("Tier 4 — R3 Live Media Integrity & Reduced-Motion / Transition 
     for (const route of MEDIA_AUDIT_ROUTES) {
       await page.goto(route);
 
-      // Scroll down to trigger any below-the-fold lazy images or video sources
+      // Scroll incrementally with paint frames so IntersectionObserver / lazy media triggers fire reliably
       await page.evaluate(async () => {
-        window.scrollTo(0, document.body.scrollHeight);
+        const nextFrame = () =>
+          new Promise<void>((resolve) => {
+            window.requestAnimationFrame(() => resolve());
+          });
+        const maxScroll = Math.max(
+          0,
+          document.documentElement.scrollHeight - window.innerHeight
+        );
+        const steps = 4;
+        for (let i = 1; i <= steps; i++) {
+          window.scrollTo(0, Math.round((maxScroll * i) / steps));
+          await nextFrame();
+        }
         window.scrollTo(0, 0);
+        await nextFrame();
       });
 
       const mediaReport = await page.evaluate(() => {
@@ -72,13 +85,17 @@ test.describe("Tier 4 — R3 Live Media Integrity & Reduced-Motion / Transition 
         const svgs = Array.from(document.querySelectorAll("svg"));
         for (const svg of svgs) {
           const rect = svg.getBoundingClientRect();
-          const style = window.getComputedStyle(svg);
-          // Skip SVGs inside intentionally hidden responsive containers (e.g., hidden min-[480px]:flex on 393px viewport)
-          const isHiddenSubtree =
-            style.display === "none" ||
-            style.visibility === "hidden" ||
-            svg.closest(".hidden") !== null ||
-            (svg.offsetParent === null && style.position !== "fixed");
+          // Walk ancestors via computed styles so responsive containers (e.g., hidden min-[480px]:flex) are skipped only when actually hidden
+          let isHiddenSubtree = false;
+          let cur: Element | null = svg;
+          while (cur) {
+            const cs = window.getComputedStyle(cur);
+            if (cs.display === "none" || cs.visibility === "hidden") {
+              isHiddenSubtree = true;
+              break;
+            }
+            cur = cur.parentElement;
+          }
           if (isHiddenSubtree) continue;
 
           const attrW = Number(svg.getAttribute("width") ?? "0");
@@ -122,35 +139,87 @@ test.describe("Tier 4 — R3 Live Media Integrity & Reduced-Motion / Transition 
 
     await page.goto("/");
 
-    const motionStyles = await page.evaluate(() => {
-      const htmlScroll = window.getComputedStyle(document.documentElement).scrollBehavior;
-      const marquee = document.querySelector(".tg-marquee-track");
-      const accent = document.querySelector(".tg-accent-draw");
-      const accordion = document.querySelector(".tg-accordion-panel");
-      return {
-        htmlScroll,
-        marqueeAnim: marquee ? window.getComputedStyle(marquee).animationName : "none",
-        accentAnim: accent ? window.getComputedStyle(accent).animationName : "none",
-        accordionTransition: accordion
-          ? window.getComputedStyle(accordion).transitionDuration
-          : "0s",
-      };
+    const htmlScroll = await page.evaluate(
+      () => window.getComputedStyle(document.documentElement).scrollBehavior
+    );
+    expect(htmlScroll).toBe("auto");
+
+    // Verify CapabilityMarquee continuous animation is disabled without silent fallback or CSS class coupling
+    const marqueeRegion = page.getByRole("region", {
+      name: "Core engineering capabilities",
     });
+    await expect(marqueeRegion).toHaveAttribute("data-paused", "false");
+    const marqueeTrackAnim = await marqueeRegion.evaluate((region) => {
+      const track = region.querySelector('div[aria-hidden="true"] > div');
+      if (!track) return null;
+      return window.getComputedStyle(track).animationName;
+    });
+    expect(marqueeTrackAnim, "CapabilityMarquee visual track must exist").not.toBeNull();
+    expect(marqueeTrackAnim).toBe("none");
 
-    expect(motionStyles.htmlScroll).toBe("auto");
-    expect(motionStyles.marqueeAnim).toBe("none");
-    expect(motionStyles.accentAnim).toBe("none");
-    expect(motionStyles.accordionTransition).toBe("0s");
+    // Verify no elements inside <main> retain active CSS animations under reduced motion
+    const activeMainCssAnimations = await page.evaluate(() => {
+      const main = document.querySelector("main#main");
+      if (!main) return ["missing-main"];
+      const active: string[] = [];
+      for (const el of Array.from(main.querySelectorAll("*"))) {
+        const animName = window.getComputedStyle(el).animationName;
+        if (animName && animName !== "none") {
+          active.push(`${el.tagName.toLowerCase()}:${animName}`);
+        }
+      }
+      return active;
+    });
+    expect(activeMainCssAnimations).toEqual([]);
 
-    // ScrollProgress disables progress bar rendering under reduced motion
-    await page.evaluate(() => window.scrollTo(0, 600));
-    const fixedProgressBars = await page.locator("div.fixed.top-0.left-0.z-\\[60\\]").count();
-    expect(fixedProgressBars).toBe(0);
-
-    // Interactive widgets still toggle instantaneously and reach visible state
+    // Verify FaqAccordion panel transition is disabled via ARIA button -> sibling panel
     const faqBtn = page.getByRole("button", {
       name: /Do you handle Salesforce/i,
     });
+    const accordionTransition = await faqBtn.evaluate((btn) => {
+      const panel = btn.nextElementSibling;
+      if (!panel) return null;
+      return window.getComputedStyle(panel).transitionDuration;
+    });
+    expect(accordionTransition, "FaqAccordion panel must exist").not.toBeNull();
+    expect(accordionTransition).toBe("0s");
+
+    // ScrollProgress disables fixed top-edge progress bar under reduced motion (opaque-box computed-style check)
+    await page.evaluate(async () => {
+      window.scrollTo(0, 600);
+      await new Promise<void>((resolve) => {
+        window.requestAnimationFrame(() => resolve());
+      });
+    });
+    const fixedTopProgressBarCount = await page.evaluate(() => {
+      let count = 0;
+      for (const el of Array.from(document.body.querySelectorAll("*"))) {
+        const cs = window.getComputedStyle(el);
+        if (
+          cs.position !== "fixed" ||
+          cs.display === "none" ||
+          cs.visibility === "hidden" ||
+          cs.opacity === "0"
+        ) {
+          continue;
+        }
+        const rect = el.getBoundingClientRect();
+        if (
+          rect.top >= 0 &&
+          rect.top <= 4 &&
+          rect.left <= 4 &&
+          rect.height > 0 &&
+          rect.height <= 4 &&
+          rect.width >= window.innerWidth * 0.5
+        ) {
+          count += 1;
+        }
+      }
+      return count;
+    });
+    expect(fixedTopProgressBarCount).toBe(0);
+
+    // Interactive widgets still toggle instantaneously and reach visible state
     await faqBtn.click();
     await expect(faqBtn).toHaveAttribute("aria-expanded", "true");
     await expect(

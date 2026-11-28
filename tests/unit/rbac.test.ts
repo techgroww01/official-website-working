@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { ALL_CANONICAL_ROLES, type CanonicalRole, getAccessiblePortals } from "@/lib/rbac/roles";
+import { ALL_CANONICAL_ROLES, getAccessiblePortals } from "@/lib/rbac/roles";
 import { hasPermission } from "@/lib/rbac/matrix";
 
 describe("20-Role Canonical RBAC Matrix", () => {

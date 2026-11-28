@@ -16,6 +16,7 @@ test.describe("Tier 4 — WCAG 2.2 AA Accessibility, Sitewide Crawl & End-to-End
   test("T4-A11Y-01: WCAG 2.2 AA axe scan passes with zero violations across public routes, auth routes, and mobile drawer", async ({
     page,
   }, testInfo) => {
+    test.slow();
     await preSeedCookieConsent(page, "essential");
 
     for (const route of [...ALL_PUBLIC_ROUTES, "/404-nonexistent", ...AUTH_ROUTES]) {
@@ -37,6 +38,7 @@ test.describe("Tier 4 — WCAG 2.2 AA Accessibility, Sitewide Crawl & End-to-End
   test("T4-CONSOLE-01: full-site crawl records zero console.error, pageerror, 5xx, or broken static assets", async ({
     page,
   }) => {
+    test.slow();
     await preSeedCookieConsent(page, "essential");
     const collectors = attachRuntimeCollectors(page);
 

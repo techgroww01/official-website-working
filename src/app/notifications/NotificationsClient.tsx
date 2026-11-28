@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Bell, CheckCheck } from "lucide-react";
 import {
@@ -33,47 +33,56 @@ export function NotificationsClient() {
   const [markingAll, setMarkingAll] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const loadNotifications = useCallback(async () => {
-    setLoading(true);
-    setErrorMsg(null);
-    try {
-      const res = await fetch("/api/v1/notifications?limit=50", {
-        cache: "no-store",
-      });
-      const json = (await res.json()) as {
-        ok?: boolean;
-        data?: {
-          notifications?: NotificationItem[];
-          unreadCount?: number;
-          demoMode?: boolean;
-        };
-        error?: { message?: string };
-      };
-
-      if (!res.ok || !json.ok) {
-        setErrorMsg(json.error?.message || "Failed to load notifications.");
-        setNotifications([]);
-        setUnreadCount(0);
-      } else {
-        const list = json.data?.notifications ?? [];
-        setNotifications(list);
-        setUnreadCount(
-          typeof json.data?.unreadCount === "number"
-            ? json.data.unreadCount
-            : list.filter((n) => !n.read_at).length
-        );
-        setDemoMode(Boolean(json.data?.demoMode));
-      }
-    } catch {
-      setErrorMsg("Network error loading notifications.");
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
   useEffect(() => {
-    void loadNotifications();
-  }, [loadNotifications]);
+    let cancelled = false;
+
+    async function loadInitial() {
+      try {
+        const res = await fetch("/api/v1/notifications?limit=50", {
+          cache: "no-store",
+        });
+        const json = (await res.json()) as {
+          ok?: boolean;
+          data?: {
+            notifications?: NotificationItem[];
+            unreadCount?: number;
+            demoMode?: boolean;
+          };
+          error?: { message?: string };
+        };
+
+        if (cancelled) return;
+
+        if (!res.ok || !json.ok) {
+          setErrorMsg(json.error?.message || "Failed to load notifications.");
+          setNotifications([]);
+          setUnreadCount(0);
+        } else {
+          const list = json.data?.notifications ?? [];
+          setNotifications(list);
+          setUnreadCount(
+            typeof json.data?.unreadCount === "number"
+              ? json.data.unreadCount
+              : list.filter((n) => !n.read_at).length
+          );
+          setDemoMode(Boolean(json.data?.demoMode));
+        }
+      } catch {
+        if (!cancelled) {
+          setErrorMsg("Network error loading notifications.");
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    }
+
+    void loadInitial();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   async function markRead(ids: string[]) {
     if (ids.length === 0) return;
@@ -101,15 +110,19 @@ export function NotificationsClient() {
 
       const nowIso = new Date().toISOString();
       const idSet = new Set(ids);
-      setNotifications((prev) => {
-        const next = prev.map((item) =>
+      const newlyReadCount = notifications.filter(
+        (item) => idSet.has(item.id) && !item.read_at
+      ).length;
+      setNotifications((prev) =>
+        prev.map((item) =>
           idSet.has(item.id) && !item.read_at
             ? { ...item, read_at: nowIso }
             : item
-        );
-        setUnreadCount(next.filter((n) => !n.read_at).length);
-        return next;
-      });
+        )
+      );
+      if (newlyReadCount > 0) {
+        setUnreadCount((prev) => Math.max(0, prev - newlyReadCount));
+      }
     } catch {
       setErrorMsg("Network error updating notifications.");
     } finally {
@@ -233,7 +246,8 @@ export function NotificationsClient() {
                 const safeHref =
                   item.link_href &&
                   item.link_href.startsWith("/") &&
-                  !item.link_href.startsWith("//")
+                  !item.link_href.startsWith("//") &&
+                  !item.link_href.startsWith("/\\")
                     ? item.link_href
                     : null;
 

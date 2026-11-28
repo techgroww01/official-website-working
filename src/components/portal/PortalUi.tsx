@@ -97,7 +97,8 @@ export type PortalEmptyVariant =
 export interface PortalEmptyStateProps {
   variant?: PortalEmptyVariant;
   title: string;
-  description: string;
+  description?: string;
+  body?: string;
   action?: React.ReactNode;
   badge?: string;
   icon?: React.ComponentType<{ className?: string }>;
@@ -223,11 +224,15 @@ export function PortalEmptyState({
   variant = "generic",
   title,
   description,
+  body,
   action,
   badge = "STATE · NO_RECORDS",
   icon: Icon,
   className = "",
 }: PortalEmptyStateProps) {
+  const resolvedDescription =
+    description ?? body ?? "Items you create or receive will appear here.";
+
   return (
     <div
       className={`rounded-[var(--radius-md)] border border-[var(--line-control)] bg-[var(--portal-surface)] p-8 text-center shadow-xs ${className}`}
@@ -239,7 +244,9 @@ export function PortalEmptyState({
           <span>{badge}</span>
         </div>
         <h2 className="font-display mt-3 text-lg font-bold text-[var(--ink)]">{title}</h2>
-        <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-muted)]">{description}</p>
+        <p className="mt-1.5 text-sm leading-relaxed text-[var(--text-muted)]">
+          {resolvedDescription}
+        </p>
         {action && <div className="mt-5 flex justify-center">{action}</div>}
       </div>
     </div>
@@ -461,11 +468,9 @@ export function PortalPhaseStepper({
 
   return (
     <div
-      role="list"
-      aria-label={ariaLabel}
       className={`rounded-[var(--radius-md)] border border-[var(--line-control)] bg-[var(--portal-surface)] p-5 shadow-xs ${className}`}
     >
-      <ol className="grid grid-cols-1 gap-4 md:grid-cols-5">
+      <ol aria-label={ariaLabel} className="grid grid-cols-1 gap-4 md:grid-cols-5">
         {steps.map((step, index) => {
           const isCompleted = step.status === "completed";
           const isCurrent = step.status === "current";

@@ -30,9 +30,10 @@ const NOINDEX_PREFIXES = [
 
 function buildCsp(nonce: string): string {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://*.supabase.co";
+  const isDev = process.env.NODE_ENV === "development";
   return [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' https://challenges.cloudflare.com https://www.googletagmanager.com`,
+    `script-src 'self' 'nonce-${nonce}'${isDev ? " 'unsafe-eval'" : ""} https://challenges.cloudflare.com https://www.googletagmanager.com`,
     "style-src 'self' 'unsafe-inline'",
     `img-src 'self' data: blob: ${supabaseUrl}`,
     "media-src 'self'",
@@ -67,15 +68,17 @@ export async function proxy(request: NextRequest) {
 
   // 2. Dynamic per-request nonce CSP
   const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
+  const csp = buildCsp(nonce);
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-nonce", nonce);
+  requestHeaders.set("Content-Security-Policy", csp);
 
   let response = NextResponse.next({
     request: { headers: requestHeaders },
   });
 
   const applySecurityHeaders = (res: NextResponse) => {
-    res.headers.set("Content-Security-Policy", buildCsp(nonce));
+    res.headers.set("Content-Security-Policy", csp);
 
     const host = request.headers.get("host") || "";
     const isPreviewHost = host.endsWith(".vercel.app");
@@ -114,7 +117,10 @@ export async function proxy(request: NextRequest) {
         },
         setAll(cookiesToSet) {
           cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
-          response = NextResponse.next({ request: { headers: requestHeaders } });
+          const refreshedHeaders = new Headers(request.headers);
+          refreshedHeaders.set("x-nonce", nonce);
+          refreshedHeaders.set("Content-Security-Policy", csp);
+          response = NextResponse.next({ request: { headers: refreshedHeaders } });
           cookiesToSet.forEach(({ name, value, options }) =>
             response.cookies.set(name, value, options)
           );

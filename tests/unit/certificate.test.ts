@@ -7,7 +7,7 @@ describe("Pure-JS PDF Certificate Generator", () => {
       certificateCode: "TG-CERT-2026-TEST",
       recipientName: "Test Candidate",
       programTitle: "Cloud Architecture & Full-Stack Systems",
-      issuedAtIso: "2026-03-01T00:00:00Z",
+      issuedAtIso: "2026-01-15T00:00:00Z",
     });
 
     expect(pdfBytes).toBeInstanceOf(Uint8Array);

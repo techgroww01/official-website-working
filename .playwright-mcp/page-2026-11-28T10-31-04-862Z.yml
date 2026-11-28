@@ -1,0 +1,401 @@
+- generic [active] [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=e3]:
+    - generic [ref=e4]:
+      - link "Tech Groww Home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e14]:
+          - generic [ref=e15]: TECH
+          - generic [ref=e17]: GROWW
+      - navigation "Primary Navigation" [ref=e18]:
+        - link "Services" [ref=e19] [cursor=pointer]:
+          - /url: /services
+        - link "Work" [ref=e20] [cursor=pointer]:
+          - /url: /work
+        - link "About" [ref=e21] [cursor=pointer]:
+          - /url: /about
+        - link "Insights" [ref=e22] [cursor=pointer]:
+          - /url: /insights
+        - link "Careers" [ref=e23] [cursor=pointer]:
+          - /url: /careers
+        - link "Contact" [ref=e24] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e25]:
+        - link "Portal Sign In" [ref=e26] [cursor=pointer]:
+          - /url: /login
+        - link "Start a project" [ref=e27] [cursor=pointer]:
+          - /url: /contact
+  - main [ref=e31]:
+    - generic [ref=e37]:
+      - paragraph [ref=e38]: Greater Noida, Uttar Pradesh · Engineering Since 2026
+      - heading [level=1] [ref=e39]:
+        - text: Technology that
+        - generic [ref=e40]: drives growth.
+      - paragraph [ref=e42]: Engineering software, Salesforce workflows, and digital products around real business bottlenecks — direct principal accountability from scope to support.
+      - generic [ref=e43]:
+        - link "Start a project" [ref=e44] [cursor=pointer]:
+          - /url: /contact
+        - link "Explore blueprint" [ref=e47] [cursor=pointer]:
+          - /url: "#services-blueprint"
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - generic [ref=e52]: "2026"
+          - generic [ref=e53]: Founded
+        - generic [ref=e54]:
+          - generic [ref=e55]: Greater Noida
+          - generic [ref=e56]: Headquarters
+        - generic [ref=e57]:
+          - generic [ref=e58]: 6 Disciplines
+          - generic [ref=e59]: Core Focus
+    - region "Core engineering capabilities" [ref=e66]:
+      - generic [ref=e67]:
+        - button "Pause scrolling capability ribbon" [ref=e68]:
+          - generic [ref=e72]: Pause
+        - list [ref=e73]:
+          - listitem [ref=e74]: Web & Mobile Engineering
+          - listitem [ref=e75]: Salesforce Admin & OmniStudio
+          - listitem [ref=e76]: UI/UX & Design Systems
+          - listitem [ref=e77]: Enterprise Software & RBAC
+          - listitem [ref=e78]: IT Consulting & Architecture
+          - listitem [ref=e79]: Technical SEO & Search Visibility
+        - generic [ref=e81]:
+          - generic [ref=e82]: Web & Mobile Engineering
+          - generic [ref=e85]: Salesforce Admin & OmniStudio
+          - generic [ref=e88]: UI/UX & Design Systems
+          - generic [ref=e91]: Enterprise Software & RBAC
+          - generic [ref=e94]: IT Consulting & Architecture
+          - generic [ref=e97]: Technical SEO & Search Visibility
+          - generic [ref=e100]: Web & Mobile Engineering
+          - generic [ref=e103]: Salesforce Admin & OmniStudio
+          - generic [ref=e106]: UI/UX & Design Systems
+          - generic [ref=e109]: Enterprise Software & RBAC
+          - generic [ref=e112]: IT Consulting & Architecture
+          - generic [ref=e115]: Technical SEO & Search Visibility
+    - region "Why Tech Groww" [ref=e118]:
+      - generic [ref=e120]:
+        - generic [ref=e127]:
+          - paragraph [ref=e128]: Direct Principal Engineering
+          - paragraph [ref=e129]: Collaborate directly with the developers writing and reviewing the production codebase.
+        - generic [ref=e135]:
+          - paragraph [ref=e136]: Zero Fabricated Claims
+          - paragraph [ref=e137]: Honest scopes, certified DPDP 2023 compliance, and verifiable case studies.
+        - generic [ref=e143]:
+          - paragraph [ref=e144]: Multi-Portal Architecture
+          - paragraph [ref=e145]: Purpose-built RBAC portals for Clients, Interns, Sales, Recruitment, and Admin.
+        - generic [ref=e153]:
+          - paragraph [ref=e154]: Launch Accountability
+          - paragraph [ref=e155]: Documented repositories, automated QA pipelines, and responsive post-launch support.
+    - generic [ref=e157]:
+      - generic [ref=e158]:
+        - paragraph [ref=e159]: 01 · What Defines Us
+        - heading "No inflated history. No agency theatre. Just serious engineering." [level=2] [ref=e160]
+      - generic [ref=e161]:
+        - article [ref=e163]:
+          - generic [ref=e164]:
+            - text: "01"
+            - heading "Business-first problem framing" [level=3] [ref=e165]
+          - paragraph [ref=e166]: We diagnose operational friction before suggesting frameworks. Every feature must justify how it serves your buyers or internal team.
+        - article [ref=e168]:
+          - generic [ref=e169]:
+            - text: "02"
+            - heading "Practical, buildable architecture" [level=3] [ref=e170]
+          - paragraph [ref=e171]: Clean PostgreSQL schemas, strict access boundaries, and readable TypeScript codebases scoped honestly around real budgets and timelines.
+        - article [ref=e173]:
+          - generic [ref=e174]:
+            - text: "03"
+            - heading "Direct principal collaboration" [level=3] [ref=e175]
+          - paragraph [ref=e176]: No account-manager layers translating requirements. You collaborate straight with the engineers designing and shipping your platform.
+        - article [ref=e178]:
+          - generic [ref=e179]:
+            - text: "04"
+            - heading "End-to-end launch accountability" [level=3] [ref=e180]
+          - paragraph [ref=e181]: Clear deliverables, verifiable QA checks, transparent documentation, and responsible post-launch maintenance.
+    - generic [ref=e183]:
+      - generic [ref=e184]:
+        - generic [ref=e185]:
+          - paragraph [ref=e186]: 02 · Interactive Services Blueprint
+          - heading "Built around real business bottlenecks." [level=2] [ref=e187]
+        - link "View all service specifications" [ref=e188] [cursor=pointer]:
+          - /url: /services
+      - generic [ref=e191]:
+        - generic [ref=e192]:
+          - button "01 Custom Web & Mobile Engineering Fast, accessible web platforms, client portals, and mobile applications engineered around clear domain boundaries." [ref=e193]:
+            - generic [ref=e194]:
+              - generic [ref=e195]:
+                - generic [ref=e196]: "01"
+                - generic [ref=e197]: Custom Web & Mobile Engineering
+              - paragraph [ref=e198]: Fast, accessible web platforms, client portals, and mobile applications engineered around clear domain boundaries.
+          - button "02 Salesforce Ecosystem Solutions Dedicated Salesforce Administration, production support, Flow automation, and OmniStudio implementations." [ref=e201]:
+            - generic [ref=e202]:
+              - generic [ref=e203]:
+                - generic [ref=e204]: "02"
+                - generic [ref=e205]: Salesforce Ecosystem Solutions
+              - paragraph [ref=e206]: Dedicated Salesforce Administration, production support, Flow automation, and OmniStudio implementations.
+          - button "03 UI/UX & Product Design Clear visual hierarchy, WCAG 2.2 AA design systems, and thoughtful operational product UX without generic clutter." [ref=e209]:
+            - generic [ref=e210]:
+              - generic [ref=e211]:
+                - generic [ref=e212]: "03"
+                - generic [ref=e213]: UI/UX & Product Design
+              - paragraph [ref=e214]: Clear visual hierarchy, WCAG 2.2 AA design systems, and thoughtful operational product UX without generic clutter.
+          - button "04 Enterprise Software Development Multi-role internal platforms, client portals, approval workflows, and tenant-isolated business software." [ref=e217]:
+            - generic [ref=e218]:
+              - generic [ref=e219]:
+                - generic [ref=e220]: "04"
+                - generic [ref=e221]: Enterprise Software Development
+              - paragraph [ref=e222]: Multi-role internal platforms, client portals, approval workflows, and tenant-isolated business software.
+          - button "05 IT Consulting & Strategic Transformation Direct principal-led architecture discovery, build-vs-buy advisory, threat modeling, and cloud modernization roadmaps." [ref=e225]:
+            - generic [ref=e226]:
+              - generic [ref=e227]:
+                - generic [ref=e228]: "05"
+                - generic [ref=e229]: IT Consulting & Strategic Transformation
+              - paragraph [ref=e230]: Direct principal-led architecture discovery, build-vs-buy advisory, threat modeling, and cloud modernization roadmaps.
+          - button "06 Digital Marketing & SEO Visibility Clean technical SEO architecture, structured schema markup, redirect hygiene, and measurable organic discoverability." [ref=e233]:
+            - generic [ref=e234]:
+              - generic [ref=e235]:
+                - generic [ref=e236]: "06"
+                - generic [ref=e237]: Digital Marketing & SEO Visibility
+              - paragraph [ref=e238]: Clean technical SEO architecture, structured schema markup, redirect hygiene, and measurable organic discoverability.
+        - generic [ref=e242]:
+          - generic [ref=e243]:
+            - generic [ref=e244]: System Blueprint 01 · Engineering
+            - generic [ref=e245]: Scoped Architecture
+          - heading "Custom Web & Mobile Engineering" [level=3] [ref=e252]
+          - generic [ref=e253]:
+            - generic [ref=e254]:
+              - paragraph [ref=e255]: 01 · Business Bottleneck
+              - paragraph [ref=e256]: Fragile templates and bolted-on plugins slow down page performance, frustrate buyers, and break whenever workflows evolve.
+            - generic [ref=e257]:
+              - paragraph [ref=e258]: 02 · Architectural Solution
+              - paragraph [ref=e259]: We build server-first Next.js web platforms and cross-platform mobile experiences backed by relational PostgreSQL data models and clean APIs.
+          - generic [ref=e260]:
+            - paragraph [ref=e261]: Core Capabilities Included
+            - list [ref=e262]:
+              - listitem [ref=e263]:
+                - generic [ref=e265]: Next.js App Router & SSR/ISR architecture
+              - listitem [ref=e266]:
+                - generic [ref=e268]: Cross-platform iOS/Android application delivery
+              - listitem [ref=e269]:
+                - generic [ref=e271]: Role-isolated web portals & customer workflows
+              - listitem [ref=e272]:
+                - generic [ref=e274]: Automated testing & Core Web Vitals optimization
+          - generic [ref=e275]:
+            - generic [ref=e276]:
+              - generic [ref=e277]: Next.js 16
+              - generic [ref=e278]: React 19
+              - generic [ref=e279]: TypeScript
+              - generic [ref=e280]: React Native
+              - generic [ref=e281]: PostgreSQL
+            - link "Full Blueprint" [ref=e283] [cursor=pointer]:
+              - /url: /services/web-mobile-engineering
+    - generic [ref=e287]:
+      - paragraph [ref=e288]: 03 · Problem-First Scoping
+      - heading "What are you trying to solve right now?" [level=2] [ref=e289]
+      - paragraph [ref=e290]: Select the operational bottleneck closest to yours to pre-fill a focused engineering conversation.
+      - radiogroup "Operational bottleneck options" [ref=e291]:
+        - radio "We need a fast custom web app or customer portal" [checked] [ref=e292]
+        - radio "Our Salesforce CRM, Flows, or OmniStudio setup is stalled" [ref=e293]
+        - radio "Manual spreadsheets are slowing down approvals & internal teams" [ref=e294]
+        - radio "Our product UX feels cluttered and outdated for serious buyers" [ref=e295]
+        - radio "We need architecture discovery before committing budget" [ref=e296]
+      - generic [ref=e297]:
+        - generic [ref=e298]:
+          - paragraph [ref=e299]: Recommended Engagement Track
+          - paragraph [ref=e300]: Custom Web & Mobile Engineering (Next.js / React Native / PostgreSQL)
+        - link "Scope this challenge" [ref=e301] [cursor=pointer]:
+          - /url: /contact?service=web-mobile-engineering
+    - generic [ref=e307]:
+      - generic [ref=e309]:
+        - paragraph [ref=e310]: 04 · How We Deliver
+        - heading "Five predictable stages. Zero black-box surprises." [level=2] [ref=e311]
+        - paragraph [ref=e312]: Every engagement follows an auditable path from problem framing to post-launch accountability.
+        - generic [ref=e313]:
+          - generic [ref=e314]: 01 Understand
+          - generic [ref=e315]: 02 Architect
+          - generic [ref=e316]: 03 Build
+          - generic [ref=e317]: 04 Verify
+          - generic [ref=e318]: 05 Support
+      - generic [ref=e319]:
+        - generic [ref=e320]:
+          - generic [ref=e321]:
+            - generic [ref=e322]: "01"
+            - generic [ref=e323]: Understand
+          - heading "Understand the business problem" [level=3] [ref=e324]
+          - paragraph [ref=e325]: Direct sessions with engineering principals to uncover constraints, user workflows, and integration dependencies before touching code.
+        - generic [ref=e326]:
+          - generic [ref=e327]:
+            - generic [ref=e328]: "02"
+            - generic [ref=e329]: Architect
+          - heading "Architect & scope cleanly" [level=3] [ref=e330]
+          - paragraph [ref=e331]: Relational PostgreSQL models, RBAC permissions, security boundaries, and UI prototypes approved up front.
+        - generic [ref=e332]:
+          - generic [ref=e333]:
+            - generic [ref=e334]: "03"
+            - generic [ref=e335]: Build
+          - heading "Iterative engineering build" [level=3] [ref=e336]
+          - paragraph [ref=e337]: Weekly staging previews tied directly to Git commits so leadership evaluates working software instead of status slides.
+        - generic [ref=e338]:
+          - generic [ref=e339]:
+            - generic [ref=e340]: "04"
+            - generic [ref=e341]: Verify
+          - heading "Verify quality & security" [level=3] [ref=e342]
+          - paragraph [ref=e343]: Automated type safety, unit/RBAC tests, accessibility checks, and security headers verified prior to DNS cutover.
+        - generic [ref=e344]:
+          - generic [ref=e345]:
+            - generic [ref=e346]: "05"
+            - generic [ref=e347]: Support
+          - heading "Accountable launch & support" [level=3] [ref=e348]
+          - paragraph [ref=e349]: Clean production cutover, team onboarding, documented repositories, and responsive post-launch operational maintenance.
+    - generic [ref=e351]:
+      - generic [ref=e352]:
+        - paragraph [ref=e353]: 05 · Reference Architectures
+        - heading "Real proof, never disguised demos." [level=2] [ref=e354]
+        - paragraph [ref=e355]: Commercial client engagements appear on our Work page strictly after written approval. Until then, inspect our transparent architectural blueprints built to demonstrate real multi-portal and Salesforce system design.
+      - link "Inspect Reference Blueprints" [ref=e356] [cursor=pointer]:
+        - /url: /work
+    - generic [ref=e361]:
+      - generic [ref=e362]:
+        - generic [ref=e363]:
+          - paragraph [ref=e364]: Engineering Journal
+          - heading "Insights & company updates." [level=2] [ref=e365]
+        - link "All insights" [ref=e366] [cursor=pointer]:
+          - /url: /insights
+      - generic [ref=e369]:
+        - link "Company Updates 3 min read Why We Built Our Platform Architecture Around Clarity and Verification How Tech Groww approaches web engineering, Salesforce operations, and honest early-stage technical accountability in 2026. Read article" [ref=e371] [cursor=pointer]:
+          - /url: /insights/tech-groww-2026-engineering-foundation
+          - generic [ref=e372]:
+            - generic [ref=e373]: Company Updates
+            - generic [ref=e374]: 3 min read
+          - heading "Why We Built Our Platform Architecture Around Clarity and Verification" [level=3] [ref=e375]
+          - paragraph [ref=e376]: How Tech Groww approaches web engineering, Salesforce operations, and honest early-stage technical accountability in 2026.
+          - generic [ref=e377]: Read article
+        - link "Salesforce 4 min read Connecting Salesforce & OmniStudio Workflows to Customer Web Portals Practical patterns for synchronizing inbound web leads, opportunity handoffs, and client onboarding without brittle manual spreadsheets. Read article" [ref=e381] [cursor=pointer]:
+          - /url: /insights/salesforce-omnistudio-and-web-portals
+          - generic [ref=e382]:
+            - generic [ref=e383]: Salesforce
+            - generic [ref=e384]: 4 min read
+          - heading "Connecting Salesforce & OmniStudio Workflows to Customer Web Portals" [level=3] [ref=e385]
+          - paragraph [ref=e386]: Practical patterns for synchronizing inbound web leads, opportunity handoffs, and client onboarding without brittle manual spreadsheets.
+          - generic [ref=e387]: Read article
+    - generic [ref=e391]:
+      - paragraph [ref=e392]: 06 · Straight Answers
+      - heading "Questions founders and CTOs actually ask." [level=2] [ref=e393]
+      - generic [ref=e394]:
+        - generic [ref=e395]:
+          - button "Tech Groww was founded in 2026 — why work with a newer engineering partner?" [expanded] [ref=e396]
+          - paragraph [ref=e402]: You get direct principal involvement from scope to deployment without account-manager middle layers or padded retainers. We compete on architectural discipline, honest communication, and clean execution.
+        - generic [ref=e403]:
+          - button "Do you handle Salesforce alongside custom web and mobile development?" [ref=e404]
+          - paragraph [ref=e410]: Yes. Salesforce Administration, production support, Flow automation, and OmniStudio implementations are core pillars alongside custom Next.js, React Native, and PostgreSQL engineering.
+        - generic [ref=e411]:
+          - button "How do you price projects without publishing misleading packages?" [ref=e412]
+          - paragraph [ref=e418]: Because enterprise software and CRM scopes vary by workflows, integrations, and security boundaries, we scope transparently through either milestone-based fixed quotes or dedicated engineering retainers after discovery.
+        - generic [ref=e419]:
+          - button "Why are items on your Work page labeled Reference Blueprint?" [ref=e420]
+          - paragraph [ref=e426]: We never present internal prototypes or demonstration architectures as commercial client wins. Only verified, client-approved engagements are ever labeled Client Work.
+        - generic [ref=e427]:
+          - button "How is customer and applicant data protected on portals you build?" [ref=e428]
+          - paragraph [ref=e434]: Every portal enforces server-side RBAC, database Row-Level Security, signed private storage URLs, magic-byte file checks, and India DPDP Act 2023 retention hygiene.
+    - generic [ref=e436]:
+      - generic [ref=e437]:
+        - generic [ref=e438]:
+          - paragraph [ref=e439]: Ready When You Are
+          - heading "Tell us what needs to move forward." [level=2] [ref=e440]
+        - link "Start a project" [ref=e441] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=e445]:
+        - link [ref=e446] [cursor=pointer]:
+          - /url: /about
+          - generic [ref=e447]:
+            - text: Company
+            - paragraph [ref=e448]: Meet the ethos & engineering mindset
+        - link [ref=e452] [cursor=pointer]:
+          - /url: /work
+          - generic [ref=e453]:
+            - text: Architecture
+            - paragraph [ref=e454]: Explore our Reference Blueprints
+  - contentinfo [ref=e458]:
+    - generic [ref=e459]:
+      - generic [ref=e460]:
+        - generic [ref=e461]:
+          - generic [ref=e470]:
+            - generic [ref=e471]: TECH
+            - generic [ref=e473]: GROWW
+          - paragraph [ref=e474]: Technology That Drives Growth. Founded 2026 in Greater Noida, Uttar Pradesh 203209, India.
+          - generic [ref=e475]:
+            - link "LinkedIn" [ref=e476] [cursor=pointer]:
+              - /url: https://www.linkedin.com/company/tech-growww
+            - link "Instagram" [ref=e481] [cursor=pointer]:
+              - /url: https://www.instagram.com/info_techgroww.co.in/
+        - generic [ref=e486]:
+          - generic [ref=e487]:
+            - heading "Company" [level=2] [ref=e488]
+            - list [ref=e489]:
+              - listitem [ref=e490]:
+                - link "About Tech Groww" [ref=e491] [cursor=pointer]:
+                  - /url: /about
+              - listitem [ref=e492]:
+                - link "Reference Blueprints" [ref=e493] [cursor=pointer]:
+                  - /url: /work
+              - listitem [ref=e494]:
+                - link "Insights & Guides" [ref=e495] [cursor=pointer]:
+                  - /url: /insights
+              - listitem [ref=e496]:
+                - link "Careers" [ref=e497] [cursor=pointer]:
+                  - /url: /careers
+              - listitem [ref=e498]:
+                - link "Internships" [ref=e499] [cursor=pointer]:
+                  - /url: /careers/internships
+          - generic [ref=e500]:
+            - heading "Capabilities" [level=2] [ref=e501]
+            - list [ref=e502]:
+              - listitem [ref=e503]:
+                - link "Web & Mobile" [ref=e504] [cursor=pointer]:
+                  - /url: /services/web-mobile-engineering
+              - listitem [ref=e505]:
+                - link "Salesforce & OmniStudio" [ref=e506] [cursor=pointer]:
+                  - /url: /services/salesforce-solutions
+              - listitem [ref=e507]:
+                - link "UI/UX Design" [ref=e508] [cursor=pointer]:
+                  - /url: /services/ui-ux-design
+              - listitem [ref=e509]:
+                - link "Enterprise Software" [ref=e510] [cursor=pointer]:
+                  - /url: /services/enterprise-software
+              - listitem [ref=e511]:
+                - link "IT Consulting" [ref=e512] [cursor=pointer]:
+                  - /url: /services/it-consulting
+          - generic [ref=e513]:
+            - heading "Legal & Reach" [level=2] [ref=e514]
+            - list [ref=e515]:
+              - listitem [ref=e516]:
+                - link "Privacy (DPDP)" [ref=e517] [cursor=pointer]:
+                  - /url: /privacy
+              - listitem [ref=e518]:
+                - link "Terms of Use" [ref=e519] [cursor=pointer]:
+                  - /url: /terms
+              - listitem [ref=e520]:
+                - link "Cookie Policy" [ref=e521] [cursor=pointer]:
+                  - /url: /cookies
+              - listitem [ref=e522]:
+                - link "contact@techgroww.co.in" [ref=e523] [cursor=pointer]:
+                  - /url: mailto:contact@techgroww.co.in
+        - generic [ref=e524]:
+          - heading "Engineering Briefs" [level=2] [ref=e525]
+          - paragraph [ref=e526]: Receive occasional technical notes and hiring updates. One-click unsubscribe anytime.
+          - generic [ref=e527]:
+            - generic [ref=e528]:
+              - generic [ref=e529]: Work email address
+              - textbox "Work email address" [ref=e530]:
+                - /placeholder: you@company.com
+            - generic [ref=e531] [cursor=pointer]:
+              - checkbox "I agree to the Privacy Policy (DPDP Act 2023)." [ref=e532]
+              - generic [ref=e533]:
+                - text: I agree to the
+                - link "Privacy Policy" [ref=e534]:
+                  - /url: /privacy
+                - text: (DPDP Act 2023).
+            - button "Subscribe" [ref=e535]
+      - generic [ref=e537]:
+        - paragraph [ref=e538]: © 2026 Tech Groww. All rights reserved.
+        - paragraph [ref=e539]: Greater Noida, Uttar Pradesh 203209, India
+  - button "Open Next.js Dev Tools" [ref=e545] [cursor=pointer]

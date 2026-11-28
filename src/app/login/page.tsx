@@ -15,6 +15,21 @@ function getSafeNextPath(rawNext: string | null): string | null {
   return null;
 }
 
+function mapOAuthError(errorCode: string | null): string | null {
+  switch (errorCode) {
+    case "oauth_unavailable":
+      return "Google Workspace sign-in is unavailable while Supabase authentication is unconfigured.";
+    case "oauth_failed":
+      return "Google Workspace sign-in could not be completed. Please try again or use email and password.";
+    case "domain_not_allowed":
+      return "Google Workspace sign-in is restricted to verified @techgroww.co.in accounts.";
+    case "account_not_invited":
+      return "This account has not been invited or is currently inactive. Contact your administrator.";
+    default:
+      return null;
+  }
+}
+
 function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -23,7 +38,9 @@ function LoginForm() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(() =>
+    mapOAuthError(searchParams.get("error"))
+  );
   const [loading, setLoading] = useState(false);
 
   async function handleEmailLogin(e: React.FormEvent) {
@@ -56,7 +73,7 @@ function LoginForm() {
 
   async function handleGoogleWorkspace() {
     if (!supabaseConfigured) {
-      setErrorMsg("Supabase Auth is not configured in local environment (.env.local).");
+      setErrorMsg("Workspace SSO is unavailable while Supabase authentication is unconfigured.");
       return;
     }
     const supabase = createBrowserSupabaseClient();

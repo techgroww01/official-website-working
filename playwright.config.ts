@@ -1,12 +1,21 @@
 import { defineConfig, devices } from "@playwright/test";
 
+const rawBaseUrl = process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:3000";
+const baseURL = rawBaseUrl.replace(/\/+$/, "");
+const parsedBaseUrl = new URL(baseURL);
+const serverHost = parsedBaseUrl.hostname || "127.0.0.1";
+const serverPort =
+  parsedBaseUrl.port || (parsedBaseUrl.protocol === "https:" ? "443" : "3000");
+
 const useProdServer = process.env.PLAYWRIGHT_USE_PROD === "1";
 const devCommand =
   process.platform === "win32"
-    ? "cmd /c npx next dev -H 127.0.0.1 -p 3000"
-    : "npx next dev -H 127.0.0.1 -p 3000";
+    ? `cmd /c npx next dev -H ${serverHost} -p ${serverPort}`
+    : `npx next dev -H ${serverHost} -p ${serverPort}`;
 const prodCommand =
-  process.platform === "win32" ? "cmd /c npm run start" : "npm run start";
+  process.platform === "win32"
+    ? `cmd /c npx next start -H ${serverHost} -p ${serverPort}`
+    : `npx next start -H ${serverHost} -p ${serverPort}`;
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -20,14 +29,14 @@ export default defineConfig({
   },
   reporter: "list",
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:3000",
+    baseURL,
     trace: "on-first-retry",
   },
   webServer: process.env.PLAYWRIGHT_SKIP_SERVER
     ? undefined
     : {
         command: useProdServer ? prodCommand : devCommand,
-        url: "http://127.0.0.1:3000/api/v1/health",
+        url: `${baseURL}/api/v1/health`,
         reuseExistingServer: !process.env.CI,
         timeout: 120_000,
       },

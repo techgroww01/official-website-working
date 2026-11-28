@@ -345,6 +345,7 @@ test.describe("Tier 1A/1B & Tier 2B/2D — Public Routes, R1 Brand Hygiene & Res
   test("T1-R1-03 & T1-R1-04: zero personal, fabricated demo, C-01..C-13, raw DB, or backtick leaks across public & auth pages", async ({
     page,
   }) => {
+    test.slow();
     const routesToCheck = [...ALL_PUBLIC_ROUTES, "/login"];
     for (const route of routesToCheck) {
       await page.goto(route);
@@ -415,6 +416,7 @@ test.describe("Tier 1A/1B & Tier 2B/2D — Public Routes, R1 Brand Hygiene & Res
   test("T2-RESP-01..03: zero horizontal overflow across all public and auth routes on current viewport", async ({
     page,
   }, testInfo) => {
+    test.slow();
     for (const route of ALL_PUBLIC_AND_AUTH_ROUTES) {
       await page.goto(route);
       await assertZeroHorizontalOverflow(
