@@ -86,6 +86,7 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${fontDisplay.variable} ${fontBody.variable} ${fontMono.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-[var(--paper)] text-[var(--ink)] antialiased">

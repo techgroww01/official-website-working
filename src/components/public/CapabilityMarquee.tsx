@@ -4,12 +4,12 @@ import React, { useState } from "react";
 import { Pause, Play } from "lucide-react";
 
 const ITEMS = [
-  "Web & Mobile Engineering",
-  "Salesforce Admin & OmniStudio",
-  "UI/UX & Design Systems",
-  "Enterprise Software & RBAC",
-  "IT Consulting & Architecture",
-  "Technical SEO & Search Visibility",
+  "Custom Websites & Mobile Apps",
+  "Salesforce & Customer Systems",
+  "Clean, Easy-to-Use Design",
+  "Business Dashboards & Portals",
+  "Practical Tech Guidance",
+  "Google Search & Online Growth",
 ];
 
 export function CapabilityMarquee() {

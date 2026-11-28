@@ -5,24 +5,24 @@ import { ChevronDown } from "lucide-react";
 
 const FAQS = [
   {
-    q: "Tech Groww was founded in 2026 — why work with a newer engineering partner?",
-    a: "You get direct principal involvement from scope to deployment without account-manager middle layers or padded retainers. We compete on architectural discipline, honest communication, and clean execution.",
+    q: "Tech Groww was founded in 2026 — why work with a newer team?",
+    a: "You get direct attention from our core team from day one to launch — without middlemen, inflated agency prices, or being handed off to juniors. We win trust through clear communication and dependable work.",
   },
   {
-    q: "Do you handle Salesforce alongside custom web and mobile development?",
-    a: "Yes. Salesforce Administration, production support, Flow automation, and OmniStudio implementations are core pillars alongside custom Next.js, React Native, and PostgreSQL engineering.",
+    q: "Do you handle Salesforce alongside custom websites and mobile apps?",
+    a: "Yes. Setting up and supporting Salesforce for sales teams is one of our core strengths, right alongside building custom websites, customer portals, and mobile apps.",
   },
   {
-    q: "How do you price projects without publishing misleading packages?",
-    a: "Because enterprise software and CRM scopes vary by workflows, integrations, and security boundaries, we scope transparently through either milestone-based fixed quotes or dedicated engineering retainers after discovery.",
+    q: "How do you price projects without confusing packages?",
+    a: "Every business has different needs. After a quick discovery chat, we give you a clear, fixed-milestone quote or monthly plan with zero hidden charges so you know exactly what you're paying for.",
   },
   {
     q: "Why are items on your Work page labeled Reference Blueprint?",
-    a: "We never present internal prototypes or demonstration architectures as commercial client wins. Only verified, client-approved engagements are ever labeled Client Work.",
+    a: "We believe in 100% honesty. We only display client names with their permission, so our sample blueprints openly show the quality and style of systems we design for businesses.",
   },
   {
-    q: "How is customer and applicant data protected on portals you build?",
-    a: "Every portal enforces server-side RBAC, database Row-Level Security, signed private storage URLs, magic-byte file checks, and India DPDP Act 2023 retention hygiene.",
+    q: "How do you keep our customer and business data safe?",
+    a: "Every portal and website we build protects customer information with strict privacy controls, private file storage, and compliance with India's DPDP Act 2023.",
   },
 ];
 
@@ -34,7 +34,7 @@ export function FaqAccordion() {
       <div className="container-arch max-w-4xl">
         <p className="eyebrow text-[var(--brand-link)]">06 · Straight Answers</p>
         <h2 className="font-display mt-2 text-3xl font-bold text-[var(--ink)] sm:text-5xl">
-          Questions founders and CTOs actually ask.
+          Common questions, answered simply.
         </h2>
 
         <div className="mt-10 divide-y divide-[var(--line)] border-y border-[var(--line)]">

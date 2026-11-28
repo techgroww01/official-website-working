@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 };
 
 const PROCESS_STEPS = [
-  { step: "01", label: "Submit brief", desc: "Fill the form — takes 3 min." },
-  { step: "02", label: "Review call", desc: "We confirm scope fit within 1–2 business days." },
-  { step: "03", label: "Proposal", desc: "Detailed milestone breakdown with honest timelines." },
-  { step: "04", label: "Kickoff", desc: "NDA signed, repo provisioned, build begins." },
+  { step: "01", label: "Send a note", desc: "Share your goal — takes under 2 minutes." },
+  { step: "02", label: "Friendly chat", desc: "We reply within 1–2 business days to talk it through." },
+  { step: "03", label: "Clear plan", desc: "Simple milestone breakdown with honest pricing & dates." },
+  { step: "04", label: "Launch together", desc: "Weekly live previews so you stay in control." },
 ];
 
 export default async function ContactPage({
@@ -35,21 +35,29 @@ export default async function ContactPage({
             {/* Left col — contact info */}
             <div className="space-y-10 lg:col-span-5">
               <AnimatedSection direction="left">
-                <p className="eyebrow text-[var(--brand-link)]">Direct Channels · Greater Noida HQ</p>
+                <p className="eyebrow text-[var(--brand-link)]">Reach Out Easily · Greater Noida HQ</p>
                 <h1 className="font-display mt-3 text-4xl font-extrabold text-[var(--ink)] sm:text-5xl">
-                  Start a focused conversation.
+                  Let&apos;s start a friendly conversation.
                 </h1>
                 <p className="mt-4 text-base text-[var(--text-muted)]">
-                  Every submission enters our Sales Portal inbox so our engineering team reviews
-                  your constraints directly — no account managers, no handoffs.
+                  Every message goes straight to our core team — no bots, no middlemen, just clear,
+                  helpful answers tailored to your business.
                 </p>
               </AnimatedSection>
 
               {/* Contact card */}
               <AnimatedSection delay={80} direction="left">
                 <div className="space-y-6 rounded-[var(--radius-md)] border border-[var(--line-control)] bg-white p-6">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <a
+                      href={`mailto:${COMPANY_CONFIG.emails.general}`}
+                      className="inline-flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-[var(--radius-pill)] bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-700 transition-colors"
+                    >
+                      <span>✉️ Email Direct: {COMPANY_CONFIG.emails.general}</span>
+                    </a>
+                  </div>
                   <div>
-                    <p className="eyebrow text-[var(--text-muted)]">General &amp; Scoping</p>
+                    <p className="eyebrow text-[var(--text-muted)]">Say Hello / General Inquiries</p>
                     <a
                       href={`mailto:${COMPANY_CONFIG.emails.general}`}
                       className="mt-1 inline-flex min-h-[36px] items-center font-semibold text-[var(--brand-link)] hover:underline"

@@ -146,14 +146,14 @@ export function SiteFooter() {
             </div>
 
             <div>
-              <h2 className="eyebrow mb-4 text-[var(--brand-sky)]">Capabilities</h2>
+              <h2 className="eyebrow mb-4 text-[var(--brand-sky)]">What We Do</h2>
               <ul className="space-y-1 text-sm text-slate-300">
                 <li>
                   <Link
                     href="/services/web-mobile-engineering"
                     className="inline-flex min-h-[40px] items-center hover:text-white transition-colors"
                   >
-                    Web &amp; Mobile
+                    Websites &amp; Mobile Apps
                   </Link>
                 </li>
                 <li>
@@ -161,7 +161,7 @@ export function SiteFooter() {
                     href="/services/salesforce-solutions"
                     className="inline-flex min-h-[40px] items-center hover:text-white transition-colors"
                   >
-                    Salesforce &amp; OmniStudio
+                    Salesforce &amp; CRM
                   </Link>
                 </li>
                 <li>
@@ -177,7 +177,7 @@ export function SiteFooter() {
                     href="/services/enterprise-software"
                     className="inline-flex min-h-[40px] items-center hover:text-white transition-colors"
                   >
-                    Enterprise Software
+                    Team Portals &amp; Tools
                   </Link>
                 </li>
                 <li>
@@ -185,7 +185,7 @@ export function SiteFooter() {
                     href="/services/it-consulting"
                     className="inline-flex min-h-[40px] items-center hover:text-white transition-colors"
                   >
-                    IT Consulting
+                    Tech Guidance
                   </Link>
                 </li>
               </ul>
@@ -222,9 +222,9 @@ export function SiteFooter() {
           </div>
 
           <div className="lg:col-span-4 rounded-[var(--radius-md)] border border-white/15 bg-[var(--ink-elevated)] p-6">
-            <h2 className="eyebrow text-[var(--brand-sky)]">Engineering Briefs</h2>
+            <h2 className="eyebrow text-[var(--brand-sky)]">Helpful Guides &amp; Updates</h2>
             <p className="mt-2 text-sm text-slate-300">
-              Receive occasional technical notes and hiring updates. One-click unsubscribe anytime.
+              Receive practical tips on growing your business online and updates from our Greater Noida studio. One-click unsubscribe anytime.
             </p>
             <form onSubmit={handleNewsletter} className="mt-4 space-y-3">
               <div>

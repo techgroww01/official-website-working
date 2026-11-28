@@ -1,12 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ShieldCheck, Sparkles, Users, Layers } from "lucide-react";
 import { COMPANY_CONFIG } from "@/lib/company-config";
 import { getPublishedInsights, getPublishedServices } from "@/lib/cms/public-data";
 import { SiteHeader } from "@/components/public/SiteHeader";
 import { SiteFooter } from "@/components/public/SiteFooter";
 import { ScrollProgress } from "@/components/public/ScrollProgress";
-import { ArchitectureVisualizer } from "@/components/public/ArchitectureVisualizer";
+import { InteractiveHeroLogo } from "@/components/public/InteractiveHeroLogo";
 import { CapabilityMarquee } from "@/components/public/CapabilityMarquee";
 import { InteractiveBlueprint } from "@/components/public/InteractiveBlueprint";
 import { ProblemSelector } from "@/components/public/ProblemSelector";
@@ -16,28 +16,28 @@ import { NextTwo } from "@/components/public/NextTwo";
 import { HeroAnimated } from "@/components/public/HeroAnimated";
 import { AnimatedSection } from "@/components/public/AnimatedSection";
 import { TrustBar } from "@/components/public/TrustBar";
-import { ShieldCheck, Code2, Users, Cpu } from "lucide-react";
+import { StudioShowcase } from "@/components/public/StudioShowcase";
 
 const PILLARS = [
   {
     num: "01",
-    title: "Business-first problem framing",
-    body: "We diagnose operational friction before suggesting frameworks. Every feature must justify how it serves your buyers or internal team.",
+    title: "Your goals come first",
+    body: "We listen to where your daily operations feel stuck before suggesting tools. Every feature exists to save time or help you win more customers.",
   },
   {
     num: "02",
-    title: "Practical, buildable architecture",
-    body: "Clean PostgreSQL schemas, strict access boundaries, and readable TypeScript codebases scoped honestly around real budgets and timelines.",
+    title: "Simple, reliable foundations",
+    body: "Clean, organized systems planned honestly around your real budget and timeline — never over-complicated with buzzwords.",
   },
   {
     num: "03",
-    title: "Direct principal collaboration",
-    body: "No account-manager layers translating requirements. You collaborate straight with the engineers designing and shipping your platform.",
+    title: "Talk directly with the builders",
+    body: "No middlemen translating your ideas. You work directly with the specialists designing, writing, and launching your product.",
   },
   {
     num: "04",
-    title: "End-to-end launch accountability",
-    body: "Clear deliverables, verifiable QA checks, transparent documentation, and responsible post-launch maintenance.",
+    title: "Support that stays after launch",
+    body: "Clear milestones, thorough testing before going live, simple guides for your staff, and dependable ongoing care.",
   },
 ];
 
@@ -53,28 +53,23 @@ export default async function HomePage() {
       <SiteHeader polarity="dark" />
 
       <main id="main" className="flex-1">
-        {/* 1. Editorial Dark Ink Hero — Premium architectural spacing */}
-        <section className="surface-dark relative overflow-hidden bg-[var(--ink)] pt-6 pb-14 text-white sm:pt-8 sm:pb-18">
-          {/* Architectural grid background */}
+        {/* 1. Hero Section — Balanced, elegant spacing without large dead gaps */}
+        <section className="surface-dark relative overflow-hidden bg-[var(--ink)] pt-4 pb-12 text-white sm:pt-6 sm:pb-16">
+          {/* Ambient radial glow */}
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 tg-hero-grid opacity-60"
-          />
-          {/* Radial glow */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[700px] -translate-x-1/2 rounded-full"
-            style={{ background: "radial-gradient(ellipse at center, rgba(2,132,199,0.12) 0%, transparent 70%)" }}
+            className="pointer-events-none absolute -top-40 left-1/2 h-[550px] w-[650px] -translate-x-1/2 rounded-full"
+            style={{ background: "radial-gradient(ellipse at center, rgba(2,132,199,0.14) 0%, transparent 70%)" }}
           />
 
-          <div className="container-arch relative z-10 grid items-center gap-10 lg:grid-cols-12">
+          <div className="container-arch relative z-10 grid items-center gap-8 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <HeroAnimated />
             </div>
 
-            {/* Architecture Visualizer Interactive Console */}
-            <div className="mt-6 flex justify-center lg:col-span-5 lg:mt-0 lg:justify-end">
-              <ArchitectureVisualizer />
+            {/* Interactive & Animated Official Company Logo */}
+            <div className="flex justify-center lg:col-span-5 lg:justify-end">
+              <InteractiveHeroLogo />
             </div>
           </div>
         </section>
@@ -82,39 +77,42 @@ export default async function HomePage() {
         {/* 2. Pausable Capability Ribbon (WCAG 2.2.2) */}
         <CapabilityMarquee />
 
-        {/* 2b. Trust / Differentiator Feature Bar */}
+        {/* 2b. Trust Feature Bar */}
         <TrustBar
           items={[
             {
-              icon: <Code2 className="h-5 w-5" aria-hidden="true" />,
-              label: "Direct Principal Engineering",
-              sub: "Collaborate directly with the developers writing and reviewing the production codebase.",
+              icon: <Sparkles className="h-5 w-5" aria-hidden="true" />,
+              label: "Talk Directly to the Makers",
+              sub: "No middlemen or confusing handoffs. Work straight with the people crafting your product.",
             },
             {
               icon: <ShieldCheck className="h-5 w-5" aria-hidden="true" />,
-              label: "Zero Fabricated Claims",
-              sub: "Honest scopes, certified DPDP 2023 compliance, and verifiable case studies.",
+              label: "100% Honest Commitments",
+              sub: "Clear pricing, realistic timelines, and verified work — never inflated claims.",
             },
             {
-              icon: <Cpu className="h-5 w-5" aria-hidden="true" />,
-              label: "Multi-Portal Architecture",
-              sub: "Purpose-built RBAC portals for Clients, Interns, Sales, Recruitment, and Admin.",
+              icon: <Layers className="h-5 w-5" aria-hidden="true" />,
+              label: "All-in-One Team Portals",
+              sub: "Easy-to-use dashboards tailored for your clients, sales team, and internal staff.",
             },
             {
               icon: <Users className="h-5 w-5" aria-hidden="true" />,
-              label: "Launch Accountability",
-              sub: "Documented repositories, automated QA pipelines, and responsive post-launch support.",
+              label: "Dependable Ongoing Care",
+              sub: "We train your team, launch smoothly, and stay available whenever you need support.",
             },
           ]}
         />
 
-        {/* 3. Four Operating Pillars */}
+        {/* 3. Real Studio Showcase (1080p Video + Authentic Indian Touch Photo Gallery) */}
+        <StudioShowcase />
+
+        {/* 4. Four Operating Pillars */}
         <section className="section-rhythm surface-light border-b border-[var(--line)] bg-[var(--paper-elevated)]">
           <div className="container-arch">
             <AnimatedSection>
-              <p className="eyebrow text-[var(--brand-link)]">01 · What Defines Us</p>
+              <p className="eyebrow text-[var(--brand-link)]">01 · Why Clients Trust Us</p>
               <h2 className="font-display mt-2 max-w-3xl text-3xl font-bold text-[var(--ink)] sm:text-5xl">
-                No inflated history. No agency theatre. Just serious engineering.
+                No confusing jargon. No empty promises. Just honest work that helps you grow.
               </h2>
             </AnimatedSection>
 
@@ -143,45 +141,45 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* 4. Interactive Services Blueprint */}
+        {/* 5. Interactive Services Blueprint */}
         <InteractiveBlueprint services={services} />
 
-        {/* 5. Problem-First Diagnostic Selector */}
+        {/* 6. Problem-First Diagnostic Selector */}
         <ProblemSelector />
 
-        {/* 6. Scroll-Tracked 5-Stage Delivery Rail */}
+        {/* 7. Scroll-Tracked 5-Stage Delivery Rail */}
         <DeliveryRail />
 
-        {/* 7. Honest Work / Reference Blueprints Teaser */}
+        {/* 8. Honest Work Teaser */}
         <section className="section-rhythm surface-dark bg-[var(--ink)] text-white">
           <div className="container-arch flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-2xl">
-              <p className="eyebrow text-[var(--brand-sky)]">05 · Reference Architectures</p>
+              <p className="eyebrow text-[var(--brand-sky)]">05 · Our Work &amp; Examples</p>
               <h2 className="font-display mt-2 text-3xl font-bold text-white sm:text-5xl">
-                Real proof, never disguised demos.
+                Honest proof, never fake portfolios.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-300">
-                Commercial client engagements appear on our Work page strictly after written approval.
-                Until then, inspect our transparent architectural blueprints built to demonstrate
-                real multi-portal and Salesforce system design.
+                We only share client project names after they give us written permission. Meanwhile,
+                explore our sample solutions designed to show how we organize portals,
+                websites, and business workflows cleanly.
               </p>
             </div>
             <Link
               href="/work"
               className="inline-flex min-h-[48px] flex-shrink-0 items-center gap-2 rounded-[var(--radius-pill)] border border-white/30 px-7 py-3 text-sm font-semibold text-white hover:border-[var(--brand-sky)] hover:text-[var(--brand-sky)]"
             >
-              Inspect Reference Blueprints
+              See Sample Solutions
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
         </section>
 
-        {/* 8. Latest Insights & Company Updates */}
+        {/* 9. Latest Guides & Company Updates */}
         <section className="section-rhythm surface-light bg-[var(--paper-elevated)]">
           <div className="container-arch">
             <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="eyebrow text-[var(--brand-link)]">Engineering Journal</p>
+                <p className="eyebrow text-[var(--brand-link)]">Helpful Guides &amp; News</p>
                 <h2 className="font-display mt-2 text-3xl font-bold text-[var(--ink)] sm:text-4xl">
                   Insights &amp; company updates.
                 </h2>
@@ -190,7 +188,7 @@ export default async function HomePage() {
                 href="/insights"
                 className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-[var(--brand-link)] hover:underline"
               >
-                All insights
+                Read all guides
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
@@ -223,10 +221,10 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* 9. Straight-Answers FAQ */}
+        {/* 10. Straight-Answers FAQ */}
         <FaqAccordion />
 
-        {/* 10. NextTwo Conversion Footer Band */}
+        {/* 11. NextTwo Conversion Footer Band */}
         <NextTwo />
       </main>
 

@@ -1,10 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { COMPANY_CONFIG } from "@/lib/company-config";
 
 export function NextTwo({
-  left = { href: "/about", eyebrow: "Company", title: "Meet the ethos & engineering mindset" },
-  right = { href: "/work", eyebrow: "Architecture", title: "Explore our Reference Blueprints" },
+  left = { href: "/about", eyebrow: "About Us", title: "Meet the people & story behind Tech Groww" },
+  right = { href: "/work", eyebrow: "Sample Work", title: "Explore our sample solutions & ideas" },
 }: {
   left?: { href: string; eyebrow: string; title: string };
   right?: { href: string; eyebrow: string; title: string };
@@ -16,19 +17,38 @@ export function NextTwo({
           <div>
             <p className="eyebrow text-[var(--brand-sky)]">Ready When You Are</p>
             <h2 className="font-display mt-2 text-3xl font-bold text-white sm:text-5xl">
-              Tell us what needs to move forward.
+              Let&apos;s talk about what you need to build.
             </h2>
+            <p className="mt-3 max-w-xl text-sm sm:text-base text-slate-300">
+              Send us a quick note or email{" "}
+              <a
+                href={`mailto:${COMPANY_CONFIG.emails.general}`}
+                className="text-[var(--brand-sky)] underline underline-offset-4 hover:text-white"
+              >
+                {COMPANY_CONFIG.emails.general}
+              </a>{" "}
+              — we reply promptly with clear, helpful answers.
+            </p>
           </div>
-          <Link
-            href="/contact"
-            className="group inline-flex min-h-[48px] flex-shrink-0 items-center gap-2 rounded-[var(--radius-pill)] bg-white px-7 py-3 text-sm font-semibold text-[var(--ink)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-100 motion-reduce:transform-none"
-          >
-            Start a project
-            <ArrowUpRight
-              className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none"
-              aria-hidden="true"
-            />
-          </Link>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href={`mailto:${COMPANY_CONFIG.emails.general}`}
+              className="inline-flex min-h-[48px] flex-shrink-0 items-center gap-2 rounded-[var(--radius-pill)] border border-white/25 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-[var(--brand-sky)] hover:text-[var(--brand-sky)]"
+            >
+              <Mail className="h-4 w-4" aria-hidden="true" />
+              <span>Email Us</span>
+            </a>
+            <Link
+              href="/contact"
+              className="group inline-flex min-h-[48px] flex-shrink-0 items-center gap-2 rounded-[var(--radius-pill)] bg-white px-7 py-3 text-sm font-semibold text-[var(--ink)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-100 motion-reduce:transform-none"
+            >
+              Start a project
+              <ArrowUpRight
+                className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transform-none"
+                aria-hidden="true"
+              />
+            </Link>
+          </div>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">

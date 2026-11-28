@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, MessageCircle } from "lucide-react";
 import { TechGrowwLogo } from "@/components/brand/TechGrowwLogo";
 
 const NAV_LINKS = [
@@ -135,10 +135,22 @@ export function SiteHeader({ polarity = "dark" }: { polarity?: "dark" | "light" 
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            href="/contact?service=inquiry"
+            aria-label="Direct inquiry to Tech Groww team"
+            className={`inline-flex min-h-[42px] items-center gap-1.5 rounded-[var(--radius-pill)] border px-3.5 py-2 text-xs font-semibold transition-all duration-200 hover:-translate-y-0.5 motion-reduce:transform-none ${
+              isDark
+                ? "border-emerald-500/40 bg-emerald-950/40 text-emerald-300 hover:bg-emerald-900/60"
+                : "border-emerald-600/30 bg-emerald-50 text-emerald-800 hover:bg-emerald-100"
+            }`}
+          >
+            <MessageCircle className="h-3.5 w-3.5 text-emerald-400" aria-hidden="true" />
+            <span>Quick Inquiry</span>
+          </Link>
           <Link
             href="/login"
-            className={`inline-flex min-h-[44px] items-center px-3 text-sm font-medium transition-colors ${
+            className={`inline-flex min-h-[44px] items-center px-2 text-sm font-medium transition-colors ${
               isDark
                 ? "text-[var(--text-muted-dark)] hover:text-white"
                 : "text-[var(--text-muted)] hover:text-[var(--ink)]"

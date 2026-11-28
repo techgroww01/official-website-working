@@ -22,16 +22,16 @@ export function InteractiveBlueprint({ services }: { services: PublicServiceItem
       <div className="container-arch">
         <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="eyebrow text-[var(--brand-link)]">02 · Interactive Services Blueprint</p>
+            <p className="eyebrow text-[var(--brand-link)]">02 · What We Build For You</p>
             <h2 className="font-display mt-2 text-3xl font-bold text-[var(--ink)] sm:text-5xl">
-              Built around real business bottlenecks.
+              Practical solutions built around your business.
             </h2>
           </div>
           <Link
             href="/services"
             className="inline-flex min-h-[44px] items-center gap-2 text-sm font-semibold text-[var(--brand-link)] hover:underline"
           >
-            View all service specifications
+            See all our services
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
@@ -147,11 +147,11 @@ export function InteractiveBlueprint({ services }: { services: PublicServiceItem
             <div className="sticky top-24 rounded-[var(--radius-lg)] border border-[var(--line-control)] bg-[var(--paper-elevated)] p-8 shadow-sm">
               <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--line)] pb-4">
                 <span className="eyebrow text-[var(--brand-link)]">
-                  System Blueprint {active.indexNumber} · {active.category}
+                  Service {active.indexNumber} · {active.category}
                 </span>
-                <span className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white px-3 py-1 font-mono-tech text-xs text-[var(--status-success)]">
+                <span className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white px-3 py-1 text-xs font-medium text-[var(--status-success)]">
                   <span className="h-2 w-2 rounded-full bg-[var(--status-success)]" aria-hidden="true" />
-                  Scoped Architecture
+                  Custom-Built For You
                 </span>
               </div>
 
@@ -166,13 +166,13 @@ export function InteractiveBlueprint({ services }: { services: PublicServiceItem
 
               <div className="mt-6 grid gap-5 sm:grid-cols-2">
                 <div className="rounded-[var(--radius-md)] border border-[var(--line)] bg-white p-4">
-                  <p className="eyebrow text-[var(--text-muted)]">01 · Business Bottleneck</p>
+                  <p className="eyebrow text-[var(--text-muted)]">01 · Common Problem</p>
                   <p className="mt-2 text-sm leading-relaxed text-[var(--ink)]">
                     {active.problemStatement}
                   </p>
                 </div>
                 <div className="rounded-[var(--radius-md)] border border-[var(--line)] bg-white p-4">
-                  <p className="eyebrow text-[var(--brand-link)]">02 · Architectural Solution</p>
+                  <p className="eyebrow text-[var(--brand-link)]">02 · How We Solve It</p>
                   <p className="mt-2 text-sm leading-relaxed text-[var(--ink)]">
                     {active.solutionApproach}
                   </p>
@@ -180,7 +180,7 @@ export function InteractiveBlueprint({ services }: { services: PublicServiceItem
               </div>
 
               <div className="mt-6">
-                <p className="eyebrow text-[var(--text-muted)]">Core Capabilities Included</p>
+                <p className="eyebrow text-[var(--text-muted)]">What&apos;s Included</p>
                 <ul className="mt-3 grid gap-2 sm:grid-cols-2">
                   {active.capabilities.map((cap) => (
                     <li key={cap} className="flex items-start gap-2 text-sm text-[var(--ink)]">
@@ -193,10 +193,10 @@ export function InteractiveBlueprint({ services }: { services: PublicServiceItem
 
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--line)] pt-5">
                 <div className="flex flex-wrap gap-2">
-                  {active.techTags.map((tag) => (
+                  {active.techTags.slice(0, 4).map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-[var(--radius-sm)] border border-[var(--line)] bg-white px-2.5 py-1 font-mono-tech text-xs text-[var(--ink)]"
+                      className="rounded-[var(--radius-sm)] border border-[var(--line)] bg-white px-2.5 py-1 text-xs font-medium text-[var(--text-muted)]"
                     >
                       {tag}
                     </span>
@@ -207,7 +207,7 @@ export function InteractiveBlueprint({ services }: { services: PublicServiceItem
                     href={`/services/${active.slug}`}
                     className="inline-flex min-h-[44px] items-center gap-2 rounded-[var(--radius-pill)] bg-[var(--brand-royal)] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#1e40af]"
                   >
-                    Full Blueprint
+                    See Full Details
                     <ArrowRight className="h-4 w-4" aria-hidden="true" />
                   </Link>
                 </div>
