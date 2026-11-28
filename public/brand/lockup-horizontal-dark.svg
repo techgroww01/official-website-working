@@ -1,0 +1,22 @@
+<!-- Tech Groww Pure-Vector Horizontal Lockup (Dark Surface) — pending C-11 visual sign-off -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" fill="none" role="img" aria-label="Tech Groww logo">
+  <defs>
+    <linearGradient id="tg-hl-d" x1="48" y1="8" x2="18" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="tg-hr-d" x1="48" y1="8" x2="78" y2="70" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="50%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+  </defs>
+  <polygon points="48,10 16,60 34,60 48,43" fill="url(#tg-hl-d)" />
+  <polygon points="48,10 80,60 62,60 48,43" fill="url(#tg-hr-d)" />
+  <polygon points="48,43 34,60 48,54" fill="#0369A1" />
+  <polygon points="48,43 62,60 48,54" fill="#0284C7" />
+  <polygon points="48,54 34,60 8,76 24,76 48,62" fill="#0284C7" />
+  <polygon points="48,54 62,60 88,76 72,76 48,62" fill="#1D4ED8" />
+  <text x="108" y="46" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="28" letter-spacing="3">TECH</text>
+  <text x="108" y="72" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="16" letter-spacing="8">GROWW</text>
+</svg>

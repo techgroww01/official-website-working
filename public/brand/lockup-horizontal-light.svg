@@ -1,0 +1,11 @@
+<!-- Tech Groww Pure-Vector Horizontal Lockup (Light / Portal Surface) — pending C-11 visual sign-off -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 96" fill="none" role="img" aria-label="Tech Groww logo">
+  <polygon points="48,10 16,60 34,60 48,43" fill="#0369A1" />
+  <polygon points="48,10 80,60 62,60 48,43" fill="#1D4ED8" />
+  <polygon points="48,43 34,60 48,54" fill="#075985" />
+  <polygon points="48,43 62,60 48,54" fill="#0369A1" />
+  <polygon points="48,54 34,60 8,76 24,76 48,62" fill="#0369A1" />
+  <polygon points="48,54 62,60 88,76 72,76 48,62" fill="#1E40AF" />
+  <text x="108" y="46" fill="#070D19" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="28" letter-spacing="3">TECH</text>
+  <text x="108" y="72" fill="#1D4ED8" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="16" letter-spacing="8">GROWW</text>
+</svg>

@@ -1,0 +1,19 @@
+<!-- Tech Groww Pure-Vector Mark (Light Stone / Portal White Variant — >=4.5:1 deepened stops; pending C-11 sign-off) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" role="img" aria-label="Tech Groww mark">
+  <defs>
+    <linearGradient id="tg-left-light" x1="60" y1="12" x2="22" y2="86" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0369A1" />
+      <stop offset="100%" stop-color="#1E40AF" />
+    </linearGradient>
+    <linearGradient id="tg-right-light" x1="60" y1="12" x2="98" y2="86" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0284C7" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+  </defs>
+  <polygon points="60,12 20,76 42,76 60,54" fill="url(#tg-left-light)" />
+  <polygon points="60,12 100,76 78,76 60,54" fill="url(#tg-right-light)" />
+  <polygon points="60,54 42,76 60,68" fill="#075985" />
+  <polygon points="60,54 78,76 60,68" fill="#0369A1" />
+  <polygon points="60,68 42,76 8,96 28,96 60,78" fill="#0369A1" />
+  <polygon points="60,68 78,76 112,96 92,96 60,78" fill="#1E40AF" />
+</svg>

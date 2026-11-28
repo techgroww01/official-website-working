@@ -30,3 +30,7 @@ pnpm-debug.log*
 Thumbs.db
 *.tsbuildinfo
 next-env.d.ts
+.serena/
+.cursor/
+.idea/
+.vscode/
